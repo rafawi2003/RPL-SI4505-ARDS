@@ -1,133 +1,765 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-        <title>Laravel</title>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asrama Telkom University</title>
+  
+  <!-- Memuat Bootstrap CSS dari CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Konten Anda akan ditambahkan di sini -->
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+  <!-- Memuat Bootstrap JavaScript (dan Popper.js jika diperlukan) dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 
-        <!-- Styles -->
-        <style>
-            /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, sans-serif;font-feature-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::-webkit-backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.mx-6{margin-left:1.5rem;margin-right:1.5rem}.ml-4{margin-left:1rem}.mt-16{margin-top:4rem}.mt-6{margin-top:1.5rem}.mt-4{margin-top:1rem}.-mt-px{margin-top:-1px}.mr-1{margin-right:0.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.h-16{height:4rem}.h-7{height:1.75rem}.h-6{height:1.5rem}.h-5{height:1.25rem}.min-h-screen{min-height:100vh}.w-auto{width:auto}.w-16{width:4rem}.w-7{width:1.75rem}.w-6{width:1.5rem}.w-5{width:1.25rem}.max-w-7xl{max-width:80rem}.shrink-0{flex-shrink:0}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-6{gap:1.5rem}.gap-4{gap:1rem}.self-center{align-self:center}.rounded-lg{border-radius:0.5rem}.rounded-full{border-radius:9999px}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity))}.bg-dots-darker{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E")}.from-gray-700\/50{--tw-gradient-from:rgb(55 65 81 / 0.5);--tw-gradient-to:rgb(55 65 81 / 0);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0);--tw-gradient-stops:var(--tw-gradient-from), transparent, var(--tw-gradient-to)}.bg-center{background-position:center}.stroke-red-500{stroke:#ef4444}.stroke-gray-400{stroke:#9ca3af}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-gray-500\/20{--tw-shadow-color:rgb(107 114 128 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-red-500 *::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-red-500::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity))}.focus\:rounded-sm:focus{border-radius:0.125rem}.focus\:outline:focus{outline-style:solid}.focus\:outline-2:focus{outline-width:2px}.focus\:outline-red-500:focus{outline-color:#ef4444}.group:hover .group-hover\:stroke-gray-600{stroke:#4b5563}.z-10{z-index: 10}@media (prefers-reduced-motion: no-preference){.motion-safe\:hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}}@media (prefers-color-scheme: dark){.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:bg-gray-800\/50{background-color:rgb(31 41 55 / 0.5)}.dark\:bg-red-800\/20{background-color:rgb(153 27 27 / 0.2)}.dark\:bg-dots-lighter{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")}.dark\:bg-gradient-to-bl{background-image:linear-gradient(to bottom left, var(--tw-gradient-stops))}.dark\:stroke-gray-600{stroke:#4b5563}.dark\:text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:shadow-none{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.dark\:ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.dark\:ring-inset{--tw-ring-inset:inset}.dark\:ring-white\/5{--tw-ring-color:rgb(255 255 255 / 0.05)}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.group:hover .dark\:group-hover\:stroke-gray-400{stroke:#9ca3af}}@media (min-width: 640px){.sm\:fixed{position:fixed}.sm\:top-0{top:0px}.sm\:right-0{right:0px}.sm\:ml-0{margin-left:0px}.sm\:flex{display:flex}.sm\:items-center{align-items:center}.sm\:justify-center{justify-content:center}.sm\:justify-between{justify-content:space-between}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:gap-8{gap:2rem}.lg\:p-8{padding:2rem}}
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+    <style>
+        /* Custom styles for this template */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #000;
+            overflow-x: hidden;
+            margin: 0;
+        }
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('gambar/hero.png') center/cover;
+            color: #fff;
+            padding: 20px;
+            margin-bottom: 100px;
+        }
+
+        .btn-login,
+        .btn-register {
+            display: inline-block;
+            padding: 10px 25px;
+            margin: 10px;
+            font-weight: normal;
+            border: 1px solid #fff; /* Bingkai putih */
+            border-radius: 40px;
+            text-decoration: none; /* Menghapus underline default pada tautan */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Efek transisi pada hover */
+        }
+
+        .btn-login {
+            background-color: #D92E2D;
+            color: #fff;
+            border: none; /* Hilangkan border pada tombol Login */
+        }
+
+        .btn-register {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff; /* Tetapkan border putih pada tombol Register */
+        }
+
+        .btn-login:hover {
+            /* Tetap warna latar merah dan teks putih saat dihover */
+            background-color: #D92E2D;
+            color: #fff;
+        }
+
+        .btn-register:hover {
+            /* Mengubah warna latar putih dan teks merah saat dihover */
+            background-color: #fff;
+            color: #D92E2D;
+            border-color: #fff; /* Ubah border menjadi merah saat dihover */
+        }
+
+        .about-section {
+            padding: 50px 0;
+        }
+
+        .section-divider {
+            margin-bottom: 100px;
+        }
+
+        footer {
+            padding: 50px 0;
+            background-color: #D92E2D;
+            color: #fff;
+            min-height: 300px;
+        }
+
+        .facility-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 100px;
+            padding: 20px 0;
+        }
+
+        .facility-card {
+            display: inline-block;
+            width: 300px;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .facility-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Facility Navigation Styles */
+        .facility-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .facility-nav-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+            transition: color 0.3s ease;
+        }
+
+        .facility-nav-btn.active {
+            color: #D92E2D; /* Highlight color for active button */
+            border-bottom: 2px solid #D92E2D; /* Red underline for active button */
+        }
+
+        /* Facility Content Styles */
+        .facility-content {
+            display: none;
+        }
+
+        .facility-content.active {
+            display: block;
+        }
+
+    </style>
+
+<style>
+    /* Mengatur ukuran maksimum gambar di dalam carousel */
+    .carousel-item img {
+            max-width: 300%; /* Lebar maksimum adalah 100% dari container */
+            max-height: 800px; /* Tinggi maksimum adalah 300px (sesuaikan dengan kebutuhan Anda) */
+            width: auto; /* Lebar otomatis sesuai dengan proporsi gambar */
+            height: auto; /* Tinggi otomatis sesuai dengan proporsi gambar */
+        }
+
+        /* Mengatur posisi teks di bawah gambar */
+        .carousel-caption {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Warna latar belakang semi-transparan untuk teks */
+            color: #fff; /* Warna teks */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px; /* Padding untuk teks */
+        }
+
+        /* Aturan CSS untuk tombol navigasi */
+    .facility-nav-btn {
+        margin: 5px; /* Berikan sedikit ruang di sekitar tombol */
+        padding: 10px 20px; /* Atur padding untuk membuat tombol lebih besar */
+        font-size: 16px; /* Ukuran font */
+    }
+
+    /* Aturan CSS untuk layar dengan lebar maksimum 768px (perangkat ukuran kecil dan di atasnya) */
+    @media (max-width: 768px) {
+        .facility-nav-btn {
+            width: 100%; /* Atur lebar tombol menjadi 100% dari lebar div */
+            margin: 5px 0; /* Ubah margin agar tombol berada dalam satu baris */
+        }
+    }
+    
+</style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="gambar/logo telu.png" alt="Telkom Dormitory" width="120">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Beranda</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTentang" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Tentang
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownTentang">
+        <li><a class="dropdown-item" href="{{ asset('pdf/Tata-Tertib-Asrama-Universitas-Telkom.pdf') }}">Aturan Asrama</a></li>
+        <li><a class="dropdown-item" href="#facility-content">Asrama</a></li>
+    </ul>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Perizinan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kalender</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dorm Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Helpdesk</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Check In / Out
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Check In</a></li>
+                            <li><a class="dropdown-item" href="#">Check Out</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pemberitahuan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ubah Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Masuk</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="display-2">Selamat Datang di Asrama Telkom University</h1>
+        <h2 class="display-5">Menyambut Penghuni Baru dengan Kebersamaan dan Antusiasme!</h2>
+        <p class="lead my-4">
+            "Mari kita jaga disiplin dan tata tertib di asrama dengan melakukan proses login dan register saat Anda tinggal sementara di sini. Langkah kecil ini membantu kami memantau keberadaan penghuni dan memastikan segala sesuatunya berjalan dengan baik. Terima kasih atas perhatiannya!"
+        </p>
+       <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+    <a href="#" class="btn btn-lg btn-login me-md-2">Masuk</a>
+    <a href="#" class="btn btn-lg btn-register">Daftar</a>
+</div>
+
+    </section>
+
+<!-- Section 2: About Asrama -->
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="{{ asset('gambar/image 3.png') }}" class="img-fluid rounded mb-3" alt="About Asrama" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-6">
+                <h2 class="display-4 mb-4">Tentang Asrama Telkom University</h2>
+                <p>Asrama Telkom University memiliki letak yang sangat strategis karena dekat dengan gedung kuliah umum (Gd. Tokong Nanas 10 lantai). Asrama ini menjadi salah satu sarana kampus yang dibangun untuk tempat tinggal Mahasiswa/i baru pada 1 tahun pertama masa perkuliahan di Telkom University sehingga para orang tua tidak perlu khawatir meninggalkan putra dan putri untuk melanjutkan studinya. Setiap gedung asrama memiliki kakak asrama yang biasa disebut sebagai Senior Residents serta Helpdesk di setiap lantai dasar gedung sehingga kenyamanan dan keamanan akan tetap terjaga. Selain itu, kegiatan pembinaan terhadap mahasiswa/i yang tinggal di asrama akan diawasi secara rutin oleh Direktorat Kemahasiswaan Telkom University.</p>
+                <!-- Menggunakan link untuk menampilkan modal -->
+                <a href="#" id="lihatDenahLink" class="text-danger" data-bs-toggle="modal" data-bs-target="#denahModal">Lihat Denah</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal untuk gambar denah -->
+<div class="modal fade" id="denahModal" tabindex="-1" aria-labelledby="denahModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="denahModalLabel">Denah Kawasan Telkom University</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Gambar denah -->
+                <img src="{{ asset('gambar/Denah.png') }}" class="img-fluid rounded mb-3" alt="Denah Asrama">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <!-- Section 3: Facilities -->
+<section id="facility-section" class="bg-light py-5">
+    <div class="container">
+        <h2 class="display-4 text-center mb-5">Jelajahi Fasilitas Terbaik Telkom University</h2>
+        <p class="lead text-center mb-4">Fasilitas Lengkap untuk Pengalaman Tinggal yang Nyaman di Asrama Telkom</p>
+
+<!-- Navigation for Facility Categories -->
+<div class="facility-nav">
+    <button class="facility-nav-btn active" onclick="showFacility('asrama')">Asrama</button>
+    <button class="facility-nav-btn" onclick="showFacility('olahraga')">Olahraga & Kesehatan</button>
+    <button class="facility-nav-btn" onclick="showFacility('makanan')">Makanan & Rekreasi</button>
+    <button class="facility-nav-btn" onclick="showFacility('area')">Area Siswa</button>
+    <button class="facility-nav-btn" onclick="showFacility('transportasi')">Transportasi</button>
+</div>
+
+
+
+        <!-- Content for each Facility Category -->
+        <div id="facility-content">
+            <!-- Facility Content: Asrama -->
+            <div id="facility-asrama" class="facility-content active">
+                
+                <p>
+                    Universitas Telkom memastikan pengalaman awal mahasiswa barunya benar-benar "Aman dan Nyaman". Sebagai bagian dari pembentukan karakter, para mahasiswa tahun pertama diwajibkan tinggal di asrama kampus selama satu tahun akademik. Suasana asri menyambut dengan tersedianya 18 gedung asrama yang dilengkapi berbagai fasilitas pendukung. Di lingkungan ini, mahasiswa bukan hanya mendapatkan tempat tinggal yang layak, tetapi juga bekal pengalaman berharga untuk membentuk kepribadian yang tangguh dan mandiri menghadapi kehidupan kampus dan masa depan.
+                </p>
+                
+                <div class="container">
+    <h2 class="text-center mt-5 mb-4">Gedung Asrama</h2>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+    <!-- Slide 1: Gedung Asrama Putri -->
+<div class="carousel-item active">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 h-100">
+                <img src="{{ asset('gambar/gedung 1.png') }}" alt="asrama putri" class="card-img-top">
+                <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
+                    <h4 class="mb-0">Gedung Asrama Putri</h4>
                 </div>
-            @endif
-
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
-                        <path d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z" fill="#FF2D20"/>
-                    </svg>
+                <div class="card-body">
+                    <p class="card-text">Gedung Asrama Putri adalah fasilitas serupa yang ditujukan khusus bagi mahasiswa perempuan. Gedung ini juga terdiri dari beberapa bangunan dengan nama lengkap dan kode gedung yang berbeda, antara lain Gedung Dana (B01), Gedung Dona (B02), Gedung Enggano (B03), Gedung Enu (B04), Gedung Fani (B05), Gedung Fanildo (B06), Gedung Sebelas (A11), dan Gedung Duabelas (A12).</p>
                 </div>
+            </div>
+        </div>
+        <!-- asrama putra -->
+        <div class="col-md-6">
+            <div class="card mb-4 h-100">
+                <img src="{{ asset('gambar/gedung2.png') }}" alt="asrama putra" class="card-img-top">
+                <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
+                    <h4 class="mb-0">Gedung Asrama Putra</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Gedung Asrama Putra adalah kompleks fasilitas hunian yang diperuntukkan bagi mahasiswa laki-laki. Gedung ini terdiri dari beberapa bangunan yang menyediakan tempat tinggal bagi mahasiswa. Setiap bangunan memiliki nama lengkap serta kode gedung, seperti Gedung Laag (A01), Gedung Larat (A02), Gedung Leti (A03), Gedung Liki (A04), Gedung Lingian (A05), Gedung Liran (A06), Gedung Sambit (A07), Gedung Sebetul (A08), Gedung Sekatung (A09), dan Gedung Sekel (A10).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <div class="mt-16">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                </div>
 
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
 
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laracasts.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laracasts</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laravel-news.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laravel News</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Forge</a>, <a href="https://vapor.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vapor</a>, <a href="https://nova.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Nova</a>, and <a href="https://envoyer.io" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Telescope</a>, and more.
-                                </p>
-                            </div>
+        <!-- Slide 2: Lobby Asrama -->
+        <div class="carousel-item">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4 h-100">
+                        <img src="{{ asset('gambar/lobby.png') }}" alt="Lobby Asrama" class="card-img-top">
+                        <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
+                            <h4 class="mb-0">Lobby Asrama</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Lobby Asrama merupakan area publik yang berada di lantai masuk atau area utama sebuah asrama. Biasanya, lobby ini berfungsi sebagai tempat pertemuan, pusat informasi, atau area resepsi. Di sini, penghuni asrama dapat berkumpul, bersosialisasi, atau menunggu tamu. Lobby juga sering dilengkapi dengan kursi, meja, dan fasilitas lainnya untuk kenyamanan penghuninya.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm sm:text-left">
-                        &nbsp;
-                    </div>
-
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                <!-- Kamar Asrama -->
+                <div class="col-md-6">
+                    <div class="card mb-4 h-100">
+                        <img src="{{ asset('gambar/fasilitas-kamar.jpg') }}" alt="Kamar Asrama" class="card-img-top">
+                        <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
+                            <h4 class="mb-0">Kamar Asrama</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Setiap kamar mahasiswa dilengkapi dengan satu set tempat tidur lengkap, termasuk kasur, sprei, dan selimut, serta satu set bantal dan linen tempat tidur. Di dalam kamar juga terdapat lemari dan rak buku untuk penyimpanan pribadi. Setiap ruangan dilengkapi dengan kamar mandi pribadi yang dilengkapi dengan perlengkapan mandi seperti sabun, sampo, dan handuk. Selain itu, terdapat juga sistem token elektronik untuk pembayaran dan pengaturan akses.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+    <!-- Tombol Navigasi -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+    <!-- Deskripsi Fasilitas Kamar Asrama -->
+    <div class="mt-4">
+        <h2 class="text-center mb-4">Fasilitas Kamar Asrama</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Kasur</li>
+            <li class="list-group-item">Bantal</li>
+            <li class="list-group-item">Bed Cover</li>
+            <li class="list-group-item">Lemari</li>
+            <li class="list-group-item">Cermin</li>
+            <li class="list-group-item">Kamar Mandi</li>
+            <li class="list-group-item">Rak Buku</li>
+        </ul>
+        <p class="mt-3"><strong>Biaya Asrama:</strong> Rp 5.500.000/Tahun</p>
+    </div>
+</div>
+
+                </div>
+            </div>
+
+            <!-- Facility Content: Olahraga & Kesehatan -->
+<div id="facility-olahraga" class="facility-content">
+    <div id="carouselOlahraga" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1: Jogging Track -->
+            <div class="carousel-item active">
+                <div class="facility">
+                    <img src="{{ asset('gambar/fasilitas_olahraga_kesehatan/joggingtrack.png') }}" class="d-block w-100 facility-img" alt="Jogging Track">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Jogging Track</h5>
+                        <p>Jogging Track Telkom University tersedia pada 2 lokasi yaitu, di area utama samping Mesjid Syamsul Ulum dan sekeliling Situ Techno.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Lapangan Basket -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/lapanganbasket.jpg" class="d-block w-100 facility-img" alt="Lapangan Basket">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Lapangan Basket</h5>
+                        <p>Lapangan Basket Telkom University terletak di area Student Sport yang bersampingan dengan lapangan volly dan lapangan futsal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Lapangan Volly -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/lapanganvolly.jpg" class="d-block w-100 facility-img" alt="Lapangan Volly">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Lapangan Volly</h5>
+                        <p>Lapangan Volly Telkom University terletak di area Student Sport yang bersampingan dengan lapangan basket dan lapangan futsal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Lapangan Futsal -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/lapanganfutsal.jpg" class="d-block w-100 facility-img" alt="Lapangan Futsal">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Lapangan Futsal</h5>
+                        <p>Lapangan Futsal Telkom University terletak di area Student Sport yang bersampingan dengan lapangan volly dan lapangan basket.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Lapangan Bulutangkis -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/lapanganbulutangkis.jpg" class="d-block w-100 facility-img" alt="Lapangan Bulutangkis">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Lapangan Bulutangkis</h5>
+                        <p>Lapangan Bulu Tangkis Telkom University memiliki 2 lapangan yang dapat digunakan. Lokasinya terletak di dalam Gedung Student Center.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Lapangan Tenis -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/lapangantennis.jpg" class="d-block w-100 facility-img" alt="Lapangan Tennis">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Lapangan Tennis</h5>
+                        <p>Lapangan Tenis Telkom University tersedia 2 lapangan yang dapat digunakan oleh TelUtizen. Lokasinya terletak antara Student Center dan Klinik Pratama THC.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Kolam Renang -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/kolamrenang.jpg" class="d-block w-100 facility-img" alt="Kolam Renang">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Kolam Renang</h5>
+                        <p>Kolam renang Telkom University memiliki 2 kolam terpisah antara laki-laki dan perempuan. Kolam renang ini terletak di lantai dasar Gedung Tokong Nanas atau GKU.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Ruang Gym -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/gym.jpg" class="d-block w-100 facility-img" alt="Ruang Gym">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Ruang Gym</h5>
+                        <p>Ruang Gym Telkom University terletak disamping student sport dengan berbagai pilihan fasilitas gym yang dapat digunakan oleh TelUtizen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Klinik Pratama THC -->
+            <div class="carousel-item">
+                <div class="facility">
+                    <img src="gambar/fasilitas/klinik.jpg" class="d-block w-100 facility-img" alt="Klinik Pratama THC">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Klinik Pratama THC</h5>
+                        <p>Klinik Pratama THC merupakan klinik khusus TelUtizen saat ingin melakukan pemeriksaan kesehatan dengan menunjukkan KTM (Kartu Tanda Mahasiswa) bagi mahasiswa dan kartu TelkoMedika bagi pegawai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselOlahraga" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselOlahraga" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+<!-- Facility Content: Makanan & Rekreasi -->
+<div id="facility-makanan" class="facility-content active">
+    <div class="row">
+        <!-- Tel-U Coffee -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="gambar/fasilitas/Tel-U-Coffee03.jpg" class="card-img-top img-fluid" alt="Tel-U Coffee">
+                <div class="card-body">
+                    <h5 class="card-title">Tel-U Coffee</h5>
+                    <p class="card-text">Tel-U Coffee merupakan bagian dari program Unit Endowment untuk mengumpulkan dana abadi Telkom University. Terletak di GKu.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kopi Alumni -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="gambar/fasilitas/Kopi-Alumni.jpg" class="card-img-top img-fluid" alt="Kopi Alumni">
+                <div class="card-body">
+                    <h5 class="card-title">Kopi Alumni</h5>
+                    <p class="card-text">Kopi Alumni merupakan fasilitas dari dukungan alumni Telkom University. Lokasi: samping Gedung Selaru (Fakultas Ilmu Terapan).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kantin -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="{{ asset('gambar/fasilitas_makanan_rekreasi/kantin.png') }}" class="card-img-top img-fluid" alt="Kantin">
+                <div class="card-body">
+                    <h5 class="card-title">Kantin</h5>
+                    <p class="card-text">Kantin terbagi di beberapa titik di Telkom University, antara lain: Kantin Teknik, Asrama Putri, Asrama Putra, Ruang Riung, dan TULT.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tel You Grill -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="gambar/fasilitas/telugrill.jpg" class="card-img-top img-fluid" alt="Tell You Grill">
+                <div class="card-body">
+                    <h5 class="card-title">Tell You Grill</h5>
+                    <p class="card-text">Tell You Grill merupakan fasilitas dari dukungan alumni Telkom University. Lokasi: samping Gedung Selaru (Fakultas Ilmu Terapan).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+          <!-- Facility Content: Area Siswa -->
+<div id="facility-area" class="facility-content">
+    <div class="container">
+        
+        <div class="row">
+            <!-- Open Library -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="gambar/fasilitas/OPLIB-1024x1024.jpg" class="card-img-top img-fluid" alt="Open Library">
+                    <div class="card-body">
+                        <h5 class="card-title">Open Library</h5>
+                        <p class="card-text">Open Library Telkom University memiliki banyak koleksi buku dan referensi yang bisa ditemukan secara online maupun dengan berkunjung ke lokasi.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Language Center -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="gambar/fasilitas/LC.jpg" class="card-img-top img-fluid" alt="Language Center">
+                    <div class="card-body">
+                        <h5 class="card-title">Language Center</h5>
+                        <p class="card-text">Language Center merupakan fasilitas pendukung bahasa TelUtizen, menyediakan program kursus bahasa inggris, bahasa korea, serta sertifikasi bahasa.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Student Lounge -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="gambar/fasilitas/Student-Lounge-01.jpg" class="card-img-top img-fluid" alt="Student Lounge">
+                    <div class="card-body">
+                        <h5 class="card-title">Student Lounge</h5>
+                        <p class="card-text">Student Lounge tersedia pada setiap gedung Fakultas, tempat santai untuk mengerjakan tugas atau berkumpul dengan mahasiswa lain.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Auditorium -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="gambar/fasilitas/auditorium.jpg" class="card-img-top img-fluid" alt="Auditorium">
+                    <div class="card-body">
+                        <h5 class="card-title">Auditorium</h5>
+                        <p class="card-text">Auditorium Damar dapat digunakan oleh seluruh TelUtizen dengan melakukan booking terlebih dahulu.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Masjid Syamsul Ulum -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="gambar/fasilitas/msu.jpg" class="card-img-top img-fluid" alt="Masjid Syamsul Ulum">
+                    <div class="card-body">
+                        <h5 class="card-title">Masjid Syamsul Ulum</h5>
+                        <p class="card-text">Masjid Syamsul Ulum merupakan fasilitas ibadah TelUtizen muslim yang dapat menampung ribuan jamaah.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pendopo Tel-U -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ asset('gambar/fasilitas_area_siswa/pendopo.png') }}" class="card-img-top img-fluid" alt="Pendopo Tel-U">
+                    <div class="card-body">
+                        <h5 class="card-title">Pendopo Tel-U</h5>
+                        <p class="card-text">Pendopo merupakan fasilitas terbuka yang bisa digunakan oleh seluruh TelUtizen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <!-- Facility Content: Transportasi -->
+<div id="facility-transportasi" class="facility-content">
+    <div class="container">
+        <div class="row">
+            <!-- Tuc-tuc -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="gambar/fasilitas/Tuctuc-01.jpg" class="card-img-top img-fluid" alt="Tuc-tuc">
+                    <div class="card-body">
+                        <h5 class="card-title">Tuc-tuc (Telkom University Car)</h5>
+                        <p class="card-text">Tuc-tuc adalah fasilitas shuttle minibus yang disediakan kampus untuk mengantar mahasiswa antar kawasan di lingkungan Telkom University.</p>
+                        <p class="card-text">Fasilitas ini gratis dan dapat dipakai oleh TelUtizen kapanpun beroperasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-danger text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start mb-4 mb-md-0">
+                    <p class="lead mb-0"><strong style="font-size: 20px;">Lokasi Kami</strong></p>
+                    <div class="d-flex align-items-start mt-3">
+                        <img src="gambar/marker-02.png" alt="Marker" style="vertical-align: middle; width: 32px; height: 32px; margin-right: 10px;">
+                        <p style="font-size: 16px; margin-bottom: 0;">
+                            Gedung Bangkit Telkom University<br>
+                            Jl. Telekomunikasi Terusan Buah Batu<br>
+                            Indonesia 40257, Bandung, Indonesia
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <p class="lead mb-0"><strong style="font-size: 20px;">Media Sosial Kami</strong></p>
+                    <div class="mt-4">
+                        <a href="https://www.instagram.com/telkomdormitory/?hl=id" class="btn btn-link me-3" target="_blank">
+                            <img src="gambar/instagram.png" alt="Instagram" style="vertical-align: middle; width: 60px; height: 60px; margin-right: 0px;">
+                        </a>
+                        <a href="https://www.linkedin.com/company/telkom-dormitory/" class="btn btn-link me-3" target="_blank">
+                            <img src="gambar/linkedin.png" alt="LinkedIn" style="vertical-align: middle; width: 60px; height: 60px; margin-right: 0px;">
+                        </a>
+                        <a href="https://www.youtube.com/@telkomdormitory" class="btn btn-link me-3" target="_blank">
+                            <img src="gambar/youtube.png" alt="YouTube" style="vertical-align: middle; width: 60px; height: 60px; margin-right: 0px;">
+                        </a>
+                        <a href="https://wa.me/6282120988835" class="btn btn-link" target="_blank">
+                            <img src="gambar/whatsapp.png" alt="WhatsApp" style="vertical-align: middle; width: 60px; height: 60px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Function to show selected facility category
+        function showFacility(category) {
+            // Hide all facility content
+            document.querySelectorAll('.facility-content').forEach((content) => {
+                content.classList.remove('active');
+            });
+
+            // Show the selected facility content
+            document.getElementById(`facility-${category}`).classList.add('active');
+
+            // Highlight the active button in navigation
+            document.querySelectorAll('.facility-nav-btn').forEach((btn) => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.facility-nav-btn:nth-child(${getNavIndex(category)})`).classList.add('active');
+        }
+
+        // Helper function to get index for navigation button
+        function getNavIndex(category) {
+            const categories = ['asrama', 'olahraga', 'makanan', 'area', 'transportasi'];
+            return categories.indexOf(category) + 1;
+        }
+
+        // Show default facility content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showFacility('asrama'); // Show Asrama content by default
+        });
+    </script>
+    <script>
+        // Inisialisasi dropdown
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+            return new bootstrap.Dropdown(dropdownToggleEl)
+        })
+    </script>
+
+    <script>
+    // biar bisa diklik text nya
+    document.getElementById('lihatDenahLink').addEventListener('click', function() {
+        console.log('Teks "Lihat Denah" diklik');
+    });
+</script>
+
+</body>
+
 </html>

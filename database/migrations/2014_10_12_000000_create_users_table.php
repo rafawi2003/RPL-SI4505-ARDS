@@ -14,9 +14,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('kamar')->nullable();
+            $table->string('nim')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('usertype')->default('penghuni');
+            $table->string('jurusan')->nullable(); // tambahkan kolom jurusan
+            $table->string('nama_ibu')->nullable(); // tambahkan kolom nama_ibu
+            $table->string('nomor_telepon')->nullable(); // tambahkan kolom nomor_telepon
+            $table->string('telefon_darurat')->nullable(); // tambahkan kolom telefon_darurat
             $table->rememberToken();
             $table->timestamps();
         });
