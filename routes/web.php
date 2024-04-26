@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,65 +15,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('beranda');
-// });
-
-Route::get('/beranda', function () {
-    return view('beranda', [
-        "title" => "Beranda"
-    ]);
+Route::get('/', function () {
+    return view('welcome');
 });
+
 
 Route::get('/tentang', function () {
     return view('tentang' ,[
-        "title" => "Tentang"
+        
     ]);
-});
+})->middleware(['auth', 'verified'])->name('tentang');
 
 Route::get('/dormshop', function () {
     return view('dormshop' ,[
-        "title" => "Dormshop"
+        
     ]);
-});
+})->name('dormshop');
 
 Route::get('/helpdesk', function () {
     return view('helpdesk' ,[
-        "title" => "Helpdesk"
+        
     ]);
-});
+})->middleware(['auth', 'verified'])->name('helpdesk');
 
 Route::get('/kalender', function () {
     return view('kalender' ,[
-        "title" => "Kalender"
     ]);
-});
+})->middleware(['auth', 'verified'])->name('kalender');
 
 Route::get('/pemberitahuan', function () {
     return view('pemberitahuan' ,[
-        "title" => "Pemberitahuan"
     ]);
-});
+})->middleware(['auth', 'verified'])->name('pemberitahuan');
 
 Route::get('/perizinan', function () {
     return view('perizinan' ,[
-        "title" => "Perizinan"
     ]);
+})->middleware(['auth', 'verified'])->name('perizinan');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/profile', function () {
-    return view('profile' ,[
-        "title" => "Profile"
-    ]);
-});
+Route::get('/home', [HomeController::class,'index']);
 
-Route::get('/keluar', function () {
-    return view('keluar' ,[
-        "title" => "Keluar"
-    ]);
-});
-
-
-
-Route::get('/login' , [LoginController::class, 'index']);
-
+require __DIR__.'/auth.php';

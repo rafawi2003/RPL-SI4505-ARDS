@@ -1,0 +1,31 @@
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+  }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+  
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+  }
+
+  .form-signin {
+    margin-top: 50px; /* Sesuaikan jarak sesuai kebutuhan Anda */
+  }
+  
+  .form-floating {
+    margin-bottom: 20px; /* Sesuaikan jarak sesuai kebutuhan Anda */
+  }
+  
+  /* Optional: Untuk memberikan jarak antara label dan input */
+  .form-floating label {
+    margin-bottom: 5px;
+  }
+  
