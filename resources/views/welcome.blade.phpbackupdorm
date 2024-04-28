@@ -2,20 +2,23 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asrama Telkom University</title>
-  
-  <!-- Memuat Bootstrap CSS dari CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-  <!-- Konten Anda akan ditambahkan di sini -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asrama Telkom University</title>
+    
+    <!-- Memuat jQuery dari CDN (diperlukan untuk Bootstrap JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <!-- Memuat Bootstrap JavaScript (dan Popper.js jika diperlukan) dari CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+    <!-- Memuat Bootstrap JavaScript dari CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JavaScript (Popper.js is required for dropdowns) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
 
     <style>
         /* Custom styles for this template */
@@ -170,26 +173,9 @@
             right: 0;
             padding: 20px; /* Padding untuk teks */
         }
-
-        /* Aturan CSS untuk tombol navigasi */
-    .facility-nav-btn {
-        margin: 5px; /* Berikan sedikit ruang di sekitar tombol */
-        padding: 10px 20px; /* Atur padding untuk membuat tombol lebih besar */
-        font-size: 16px; /* Ukuran font */
-    }
-
-    /* Aturan CSS untuk layar dengan lebar maksimum 768px (perangkat ukuran kecil dan di atasnya) */
-    @media (max-width: 768px) {
-        .facility-nav-btn {
-            width: 100%; /* Atur lebar tombol menjadi 100% dari lebar div */
-            margin: 5px 0; /* Ubah margin agar tombol berada dalam satu baris */
-        }
-    }
-    
 </style>
 </head>
 <body>
-
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -198,7 +184,7 @@
         <p class="lead my-4">
             "Mari kita jaga disiplin dan tata tertib di asrama dengan melakukan proses login dan register saat Anda tinggal sementara di sini. Langkah kecil ini membantu kami memantau keberadaan penghuni dan memastikan segala sesuatunya berjalan dengan baik. Terima kasih atas perhatiannya!"
         </p>
-        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+       <div class="d-grid gap-3 d-md-flex justify-content-md-center">
         @auth
                 <a href="{{ url('/dashboard') }}" class="btn btn-lg btn-login me-md-2">Dashboard</a>
             @else
@@ -210,42 +196,25 @@
         @endauth
     <!-- <a href="#" class="btn btn-lg btn-login me-md-2">Masuk</a>
     <a href="#" class="btn btn-lg btn-register">Daftar</a> -->
-        </div>
-    </section>
-
-<!-- Section 2: About Asrama -->
-<section class="about-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <img src="{{ asset('images/image 3.png') }}" class="img-fluid rounded mb-3" alt="About Asrama" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="col-md-6">
-                <h2 class="display-4 mb-4">Tentang Asrama Telkom University</h2>
-                <p>Asrama Telkom University memiliki letak yang sangat strategis karena dekat dengan gedung kuliah umum (Gd. Tokong Nanas 10 lantai). Asrama ini menjadi salah satu sarana kampus yang dibangun untuk tempat tinggal Mahasiswa/i baru pada 1 tahun pertama masa perkuliahan di Telkom University sehingga para orang tua tidak perlu khawatir meninggalkan putra dan putri untuk melanjutkan studinya. Setiap gedung asrama memiliki kakak asrama yang biasa disebut sebagai Senior Residents serta Helpdesk di setiap lantai dasar gedung sehingga kenyamanan dan keamanan akan tetap terjaga. Selain itu, kegiatan pembinaan terhadap mahasiswa/i yang tinggal di asrama akan diawasi secara rutin oleh Direktorat Kemahasiswaan Telkom University.</p>
-                <!-- Menggunakan link untuk menampilkan modal -->
-                <a href="#" id="lihatDenahLink" class="text-danger" data-bs-toggle="modal" data-bs-target="#denahModal">Lihat Denah</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Modal untuk images denah -->
-<div class="modal fade" id="denahModal" tabindex="-1" aria-labelledby="denahModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="denahModalLabel">Denah Kawasan Telkom University</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- images denah -->
-                <img src="{{ asset('images/Denah.png') }}" class="img-fluid rounded mb-3" alt="Denah Asrama">
-            </div>
-        </div>
-    </div>
 </div>
 
+    </section>
+
+    <!-- Section 2: About Asrama -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="images/image 3.png" class="img-fluid rounded mb-3" alt="About Asrama" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="display-4 mb-4">Tentang Asrama Telkom University</h2>
+                    <p>Asrama Telkom University memiliki letak yang sangat strategis karena dekat dengan gedung kuliah umum (Gd. Tokong Nanas 10 lantai). Asrama ini menjadi salah satu sarana kampus yang dibangun untuk tempat tinggal Mahasiswa/i baru pada 1 tahun pertama masa perkuliahan di Telkom University sehingga para orang tua tidak perlu khawatir meninggalkan putra dan putri untuk melanjutkan studinya. Setiap gedung asrama memiliki kakak asrama yang biasa disebut sebagai Senior Residents serta Helpdesk di setiap lantai dasar gedung sehingga kenyamanan dan keamanan akan tetap terjaga. Selain itu, kegiatan pembinaan terhadap mahasiswa/i yang tinggal di asrama akan diawasi secara rutin oleh Direktorat Kemahasiswaan Telkom University.</p>
+                    <a href="#" class="btn btn-danger btn-lg">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
    <!-- Section 3: Facilities -->
 <section id="facility-section" class="bg-light py-5">
@@ -253,132 +222,98 @@
         <h2 class="display-4 text-center mb-5">Jelajahi Fasilitas Terbaik Telkom University</h2>
         <p class="lead text-center mb-4">Fasilitas Lengkap untuk Pengalaman Tinggal yang Nyaman di Asrama Telkom</p>
 
-<!-- Navigation for Facility Categories -->
-<div class="facility-nav">
-    <button class="facility-nav-btn active" onclick="showFacility('asrama')">Asrama</button>
-    <button class="facility-nav-btn" onclick="showFacility('olahraga')">Olahraga & Kesehatan</button>
-    <button class="facility-nav-btn" onclick="showFacility('makanan')">Makanan & Rekreasi</button>
-    <button class="facility-nav-btn" onclick="showFacility('area')">Area Siswa</button>
-    <button class="facility-nav-btn" onclick="showFacility('transportasi')">Transportasi</button>
-</div>
-
-
+        <!-- Navigation for Facility Categories -->
+        <div class="facility-nav">
+            <button class="facility-nav-btn active" onclick="showFacility('asrama')">Asrama</button>
+            <button class="facility-nav-btn" onclick="showFacility('olahraga')">Olahraga & Kesehatan</button>
+            <button class="facility-nav-btn" onclick="showFacility('makanan')">Makanan & Rekreasi</button>
+            <button class="facility-nav-btn" onclick="showFacility('area')">Area Siswa</button>
+            <button class="facility-nav-btn" onclick="showFacility('transportasi')">Transportasi</button>
+        </div>
 
         <!-- Content for each Facility Category -->
         <div id="facility-content">
             <!-- Facility Content: Asrama -->
             <div id="facility-asrama" class="facility-content active">
-                
+                <h3>Asrama</h3>
                 <p>
                     Universitas Telkom memastikan pengalaman awal mahasiswa barunya benar-benar "Aman dan Nyaman". Sebagai bagian dari pembentukan karakter, para mahasiswa tahun pertama diwajibkan tinggal di asrama kampus selama satu tahun akademik. Suasana asri menyambut dengan tersedianya 18 gedung asrama yang dilengkapi berbagai fasilitas pendukung. Di lingkungan ini, mahasiswa bukan hanya mendapatkan tempat tinggal yang layak, tetapi juga bekal pengalaman berharga untuk membentuk kepribadian yang tangguh dan mandiri menghadapi kehidupan kampus dan masa depan.
                 </p>
-                
-                <div class="container">
-    <h2 class="text-center mt-5 mb-4">Gedung Asrama</h2>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-
-    <!-- Slide 1: Gedung Asrama Putri -->
-<div class="carousel-item active">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card mb-4 h-100">
-                <img src="{{ asset('images/gedung 1.png') }}" alt="asrama putri" class="card-img-top">
-                <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
-                    <h4 class="mb-0">Gedung Asrama Putri</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Gedung Asrama Putri adalah fasilitas serupa yang ditujukan khusus bagi mahasiswa perempuan. Gedung ini juga terdiri dari beberapa bangunan dengan nama lengkap dan kode gedung yang berbeda, antara lain Gedung Dana (B01), Gedung Dona (B02), Gedung Enggano (B03), Gedung Enu (B04), Gedung Fani (B05), Gedung Fanildo (B06), Gedung Sebelas (A11), dan Gedung Duabelas (A12).</p>
-                </div>
-            </div>
-        </div>
-        <!-- asrama putra -->
-        <div class="col-md-6">
-            <div class="card mb-4 h-100">
-                <img src="{{ asset('images/gedung2.png') }}" alt="asrama putra" class="card-img-top">
-                <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
-                    <h4 class="mb-0">Gedung Asrama Putra</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Gedung Asrama Putra adalah kompleks fasilitas hunian yang diperuntukkan bagi mahasiswa laki-laki. Gedung ini terdiri dari beberapa bangunan yang menyediakan tempat tinggal bagi mahasiswa. Setiap bangunan memiliki nama lengkap serta kode gedung, seperti Gedung Laag (A01), Gedung Larat (A02), Gedung Leti (A03), Gedung Liki (A04), Gedung Lingian (A05), Gedung Liran (A06), Gedung Sambit (A07), Gedung Sebetul (A08), Gedung Sekatung (A09), dan Gedung Sekel (A10).</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-        <!-- Slide 2: Lobby Asrama -->
-        <div class="carousel-item">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card mb-4 h-100">
-                        <img src="{{ asset('images/lobby.png') }}" alt="Lobby Asrama" class="card-img-top">
-                        <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
-                            <h4 class="mb-0">Lobby Asrama</h4>
+                <h4>Gedung Asrama</h4>
+                <div class="row">
+                    <!-- images gedung asrama putra dan putri -->
+                    <div class="col-md-6">
+                        <div class="text-center mb-4">
+                            <h4 class="mb-0">Gedung Asrama Putra</h4>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">Lobby Asrama merupakan area publik yang berada di lantai masuk atau area utama sebuah asrama. Biasanya, lobby ini berfungsi sebagai tempat pertemuan, pusat informasi, atau area resepsi. Di sini, penghuni asrama dapat berkumpul, bersosialisasi, atau menunggu tamu. Lobby juga sering dilengkapi dengan kursi, meja, dan fasilitas lainnya untuk kenyamanan penghuninya.</p>
+                        <div class="text-center mb-4">
+                            <img src="images/fasilitas/Asrama-putra.jpg" alt="Gedung Asrama Putra" class="img-fluid">
                         </div>
+                        <p>
+                            10 Gedung:
+                            <ul>
+                                <li>A01 Gd. Laag</li>
+                                <li>A02 Gd. Larat</li>
+                                <li>A03 Gd. Leti</li>
+                                <li>A04 Gd. Liki</li>
+                                <li>A05 Gd. Lingian</li>
+                                <li>A06 Gd. Liran</li>
+                                <li>A07 Gd. Sambit</li>
+                                <li>A08 Gd. Sebetul</li>
+                                <li>A09 Gd. Sekatung</li>
+                                <li>A10 Gd. Sekel</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center mb-4">
+                            <h4 class="mb-0">Gedung Asrama Putri</h4>
+                        </div>
+                        <div class="text-center mb-4">
+                            <img src="images/fasilitas/Asrama-putri.jpg" alt="Gedung Asrama Putri" class="img-fluid">
+                        </div>
+                        <p>
+                            8 Gedung:
+                            <ul>
+                                <li>B01 Gd. Dana (A)</li>
+                                <li>B02 Gd. Dona (B)</li>
+                                <li>B03 Gd. Enggano (C)</li>
+                                <li>B04 Gd. Enu (D)</li>
+                                <li>B05 Gd. Fani (E)</li>
+                                <li>B06 Gd. Fanildo (F)</li>
+                                <li>A11 Gd. Sebelas (11)</li>
+                                <li>A12 Gd. Duabelas (12)</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                     <!-- Deskripsi Fasilitas Kamar Asrama -->
+                     <div class="mt-4">
+                        <h4>Fasilitas Kamar Asrama:</h4>
+                        <ul>
+                            <li>Kasur</li>
+                            <li>Bantal</li>
+                            <li>Bed Cover</li>
+                            <li>Lemari</li>
+                            <li>Cermin</li>
+                            <li>Kamar Mandi</li>
+                            <li>Rak Buku</li>
+                        </ul>
+                        <p><strong>Biaya Asrama:</strong> Rp 5.500.000/Tahun</p>
                     </div>
                 </div>
-                <!-- Kamar Asrama -->
-                <div class="col-md-6">
-                    <div class="card mb-4 h-100">
-                        <img src="{{ asset('images/fasilitas-kamar.jpg') }}" alt="Kamar Asrama" class="card-img-top">
-                        <div class="card-header" style="background-color: #D92E2D; color: white; text-align: center;">
-                            <h4 class="mb-0">Kamar Asrama</h4>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Setiap kamar mahasiswa dilengkapi dengan satu set tempat tidur lengkap, termasuk kasur, sprei, dan selimut, serta satu set bantal dan linen tempat tidur. Di dalam kamar juga terdapat lemari dan rak buku untuk penyimpanan pribadi. Setiap ruangan dilengkapi dengan kamar mandi pribadi yang dilengkapi dengan perlengkapan mandi seperti sabun, sampo, dan handuk. Selain itu, terdapat juga sistem token elektronik untuk pembayaran dan pengaturan akses.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
-    <!-- Tombol Navigasi -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-
-
-
-
-    <!-- Deskripsi Fasilitas Kamar Asrama -->
-    <div class="mt-4">
-        <h2 class="text-center mb-4">Fasilitas Kamar Asrama</h2>
-        <ul class="list-group">
-            <li class="list-group-item">Kasur</li>
-            <li class="list-group-item">Bantal</li>
-            <li class="list-group-item">Bed Cover</li>
-            <li class="list-group-item">Lemari</li>
-            <li class="list-group-item">Cermin</li>
-            <li class="list-group-item">Kamar Mandi</li>
-            <li class="list-group-item">Rak Buku</li>
-        </ul>
-        <p class="mt-3"><strong>Biaya Asrama:</strong> Rp 5.500.000/Tahun</p>
-    </div>
-</div>
-
                 </div>
             </div>
 
-            <!-- Facility Content: Olahraga & Kesehatan -->
+  <!-- Facility Content: Olahraga & Kesehatan -->
 <div id="facility-olahraga" class="facility-content">
     <div id="carouselOlahraga" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <!-- Slide 1: Jogging Track -->
             <div class="carousel-item active">
                 <div class="facility">
-                    <img src="{{ asset('images/fasilitas_olahraga_kesehatan/joggingtrack.png') }}" class="d-block w-100 facility-img" alt="Jogging Track">
+                    <img src="images/fasilitas/joggingtrack.jpg" class="d-block w-100" alt="Jogging Track">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Jogging Track</h5>
                         <p>Jogging Track Telkom University tersedia pada 2 lokasi yaitu, di area utama samping Mesjid Syamsul Ulum dan sekeliling Situ Techno.</p>
@@ -389,7 +324,7 @@
             <!-- Slide 2: Lapangan Basket -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/lapanganbasket.jpg" class="d-block w-100 facility-img" alt="Lapangan Basket">
+                    <img src="images/fasilitas/lapanganbasket.jpg" class="d-block w-100" alt="Lapangan Basket">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Lapangan Basket</h5>
                         <p>Lapangan Basket Telkom University terletak di area Student Sport yang bersampingan dengan lapangan volly dan lapangan futsal.</p>
@@ -400,7 +335,7 @@
             <!-- Slide 3: Lapangan Volly -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/lapanganvolly.jpg" class="d-block w-100 facility-img" alt="Lapangan Volly">
+                    <img src="images/fasilitas/lapanganvolly.jpg" class="d-block w-100" alt="Lapangan Volly">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Lapangan Volly</h5>
                         <p>Lapangan Volly Telkom University terletak di area Student Sport yang bersampingan dengan lapangan basket dan lapangan futsal.</p>
@@ -411,7 +346,7 @@
             <!-- Slide 4: Lapangan Futsal -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/lapanganfutsal.jpg" class="d-block w-100 facility-img" alt="Lapangan Futsal">
+                    <img src="images/fasilitas/lapanganfutsal.jpg" class="d-block w-100" alt="Lapangan Futsal">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Lapangan Futsal</h5>
                         <p>Lapangan Futsal Telkom University terletak di area Student Sport yang bersampingan dengan lapangan volly dan lapangan basket.</p>
@@ -422,7 +357,7 @@
             <!-- Slide 5: Lapangan Bulutangkis -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/lapanganbulutangkis.jpg" class="d-block w-100 facility-img" alt="Lapangan Bulutangkis">
+                    <img src="images/fasilitas/lapanganbulutangkis.jpg" class="d-block w-100" alt="Lapangan Bulutangkis">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Lapangan Bulutangkis</h5>
                         <p>Lapangan Bulu Tangkis Telkom University memiliki 2 lapangan yang dapat digunakan. Lokasinya terletak di dalam Gedung Student Center.</p>
@@ -433,7 +368,7 @@
             <!-- Slide 6: Lapangan Tenis -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/lapangantennis.jpg" class="d-block w-100 facility-img" alt="Lapangan Tennis">
+                    <img src="images/fasilitas/lapangantennis.jpg" class="d-block w-100" alt="Lapangan Tennis">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Lapangan Tennis</h5>
                         <p>Lapangan Tenis Telkom University tersedia 2 lapangan yang dapat digunakan oleh TelUtizen. Lokasinya terletak antara Student Center dan Klinik Pratama THC.</p>
@@ -444,7 +379,7 @@
             <!-- Slide 7: Kolam Renang -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/kolamrenang.jpg" class="d-block w-100 facility-img" alt="Kolam Renang">
+                    <img src="images/fasilitas/kolamrenang.jpg" class="d-block w-100" alt="Kolam Renang">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Kolam Renang</h5>
                         <p>Kolam renang Telkom University memiliki 2 kolam terpisah antara laki-laki dan perempuan. Kolam renang ini terletak di lantai dasar Gedung Tokong Nanas atau GKU.</p>
@@ -455,7 +390,7 @@
             <!-- Slide 8: Ruang Gym -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/gym.jpg" class="d-block w-100 facility-img" alt="Ruang Gym">
+                    <img src="images/fasilitas/gym.jpg" class="d-block w-100" alt="Ruang Gym">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Ruang Gym</h5>
                         <p>Ruang Gym Telkom University terletak disamping student sport dengan berbagai pilihan fasilitas gym yang dapat digunakan oleh TelUtizen.</p>
@@ -466,7 +401,7 @@
             <!-- Slide 9: Klinik Pratama THC -->
             <div class="carousel-item">
                 <div class="facility">
-                    <img src="images/fasilitas/klinik.jpg" class="d-block w-100 facility-img" alt="Klinik Pratama THC">
+                    <img src="images/fasilitas/klinik.jpg" class="d-block w-100" alt="Klinik Pratama THC">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Klinik Pratama THC</h5>
                         <p>Klinik Pratama THC merupakan klinik khusus TelUtizen saat ingin melakukan pemeriksaan kesehatan dengan menunjukkan KTM (Kartu Tanda Mahasiswa) bagi mahasiswa dan kartu TelkoMedika bagi pegawai.</p>
@@ -475,35 +410,34 @@
             </div>
         </div>
         
-        <!-- Navigation buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselOlahraga" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselOlahraga" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+       <!-- Navigation buttons -->
+       <button class="carousel-control-prev" type="button" data-bs-target="#carouselOlahraga" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselOlahraga" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 </div>
 
-
-<!-- Facility Content: Makanan & Rekreasi -->
+           <!-- Facility Content: Makanan & Rekreasi -->
 <div id="facility-makanan" class="facility-content active">
     <div class="row">
         <!-- Tel-U Coffee -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="images/fasilitas/Tel-U-Coffee03.jpg" class="card-img-top img-fluid" alt="Tel-U Coffee">
                 <div class="card-body">
                     <h5 class="card-title">Tel-U Coffee</h5>
-                    <p class="card-text">Tel-U Coffee merupakan bagian dari program Unit Endowment untuk mengumpulkan dana abadi Telkom University. Terletak di GKu.</p>
+                    <p class="card-text">Tel-U Coffee merupakan bagian dari program Unit Endowment untuk mengumpulkan dana abadi Telkom University. Terletak di Gedung Tokong Nanas (GKu).</p>
                 </div>
             </div>
         </div>
 
         <!-- Kopi Alumni -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="images/fasilitas/Kopi-Alumni.jpg" class="card-img-top img-fluid" alt="Kopi Alumni">
                 <div class="card-body">
@@ -514,9 +448,9 @@
         </div>
 
         <!-- Kantin -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card">
-                <img src="{{ asset('images/fasilitas_makanan_rekreasi/kantin.png') }}" class="card-img-top img-fluid" alt="Kantin">
+                <img src="images/fasilitas/kantin.jpeg" class="card-img-top img-fluid" alt="Kantin">
                 <div class="card-body">
                     <h5 class="card-title">Kantin</h5>
                     <p class="card-text">Kantin terbagi di beberapa titik di Telkom University, antara lain: Kantin Teknik, Asrama Putri, Asrama Putra, Ruang Riung, dan TULT.</p>
@@ -525,7 +459,7 @@
         </div>
 
         <!-- Tel You Grill -->
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="images/fasilitas/telugrill.jpg" class="card-img-top img-fluid" alt="Tell You Grill">
                 <div class="card-body">
@@ -538,11 +472,10 @@
 </div>
 
 
-
           <!-- Facility Content: Area Siswa -->
 <div id="facility-area" class="facility-content">
     <div class="container">
-        
+        <h2>Fasilitas Area Siswa</h2>
         <div class="row">
             <!-- Open Library -->
             <div class="col-md-4 mb-4">
@@ -597,7 +530,7 @@
             <!-- Pendopo Tel-U -->
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="{{ asset('images/fasilitas_area_siswa/pendopo.png') }}" class="card-img-top img-fluid" alt="Pendopo Tel-U">
+                    <img src="images/fasilitas/pendopo-1024x1024.jpg" class="card-img-top img-fluid" alt="Pendopo Tel-U">
                     <div class="card-body">
                         <h5 class="card-title">Pendopo Tel-U</h5>
                         <p class="card-text">Pendopo merupakan fasilitas terbuka yang bisa digunakan oleh seluruh TelUtizen.</p>
@@ -612,6 +545,7 @@
             <!-- Facility Content: Transportasi -->
 <div id="facility-transportasi" class="facility-content">
     <div class="container">
+        <h2>Fasilitas Transportasi</h2>
         <div class="row">
             <!-- Tuc-tuc -->
             <div class="col-md-4 mb-4">
@@ -700,14 +634,14 @@
             return new bootstrap.Dropdown(dropdownToggleEl)
         })
     </script>
-
+    <!-- Script untuk Inisialisasi Carousel -->
     <script>
-    // biar bisa diklik text nya
-    document.getElementById('lihatDenahLink').addEventListener('click', function() {
-        console.log('Teks "Lihat Denah" diklik');
-    });
-</script>
-
+        $(document).ready(function() {
+            // Inisialisasi carousel dengan ID carouselOlahraga
+            $('#carouselOlahraga').carousel();
+        });
+    </script>
+    
 </body>
 
 </html>
