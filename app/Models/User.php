@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'kamar',
         'nim',
+        'status',
+        'gender',
         'email',
         'password',
         'usertype',
