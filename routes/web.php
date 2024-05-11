@@ -51,6 +51,7 @@ Route::get('/pemberitahuan', function () {
 Route::get('/perizinan', function () {
     return view('perizinan' ,[
     ]);
+    
 })->middleware(['auth', 'verified'])->name('perizinan');
 
 Route::get('/dashboard', function () {
@@ -60,9 +61,11 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); 
 });
 
 Route::get('/home', [HomeController::class,'index']);
+
+Route::post('/dashboard', [ProfileController::class, 'checkin'])->name('profile.checkin');
 
 require __DIR__.'/auth.php';
