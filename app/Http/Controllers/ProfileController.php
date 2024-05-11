@@ -37,6 +37,9 @@ class ProfileController extends Controller
         'nama_ibu' => $request->nama_ibu,
         'nomor_telepon' => $request->nomor_telepon,
         'telefon_darurat' => $request->telefon_darurat,
+        'kamar' => $request->kamar,
+        'status' => $request->status
+
     ]);
 
     // Jika alamat email diubah, set ulang waktu verifikasi email
@@ -67,5 +70,13 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    public function checkin(Request $request): RedirectResponse
+    {
+        $user = Auth::user();
+        $user->status = 'Menunggu Update Kamar oleh Admin';
+        $user->save();
+    
+        return redirect()->route('dashboard')->with('status', 'Check In berhasil. Kamar Anda sedang menunggu update oleh Admin.');
     }
 }
