@@ -51,6 +51,7 @@ Route::get('/pemberitahuan', function () {
 Route::get('/perizinan', function () {
     return view('perizinan' ,[
     ]);
+    
 })->middleware(['auth', 'verified'])->name('perizinan');
 
 Route::get('/dashboard', function () {
