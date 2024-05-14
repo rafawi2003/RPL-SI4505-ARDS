@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
-use App\Models\User;
+use App\Models\Room;
 use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
@@ -12,13 +12,13 @@ use Filament\Forms\Components\Card;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\RoomResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\RoomResource\RelationManagers;
 
-class UserResource extends Resource
+class RoomResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Room::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -28,19 +28,12 @@ class UserResource extends Resource
             ->schema([
                 Card::make()
                 ->schema([
-                    TextInput::make('nim')->unique(ignorable: fn($record) => $record),
-                    TextInput::make('name'),
-                    TextInput::make('jurusan'),
-                    TextInput::make('status'),
+                    TextInput::make('penghuni')->unique(ignorable: fn($record) => $record),
                     TextInput::make('gender'),
+                    TextInput::make('gedung'),
+                    TextInput::make('lantai'),
                     TextInput::make('kamar'),
-                    TextInput::make('email'),
-                    TextInput::make('nama_ibu'),
-                    TextInput::make('nomor_telepon'),
-                    TextInput::make('telefon_darurat'),
-                    TextInput::make('usertype'),
                     ])
-                ->columns(2)
             ]);
     }
 
@@ -48,13 +41,8 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nim')->sortable()->searchable(),
-                TextColumn::make('gender')->sortable()->searchable(),
-                TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('jurusan')->sortable()->searchable(),
-                TextColumn::make('kamar')->sortable()->searchable(),
-                TextColumn::make('status')->sortable()->searchable(),
-                
+                TextColumn::make('penghuni')->sortable()->searchable(),
+                TextColumn::make('gender')->sortable()->searchable(), 
             ])
             ->filters([
                 //
@@ -78,9 +66,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListRooms::route('/'),
+            'create' => Pages\CreateRoom::route('/create'),
+            'edit' => Pages\EditRoom::route('/{record}/edit'),
         ];
     }    
 }
