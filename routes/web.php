@@ -150,5 +150,5 @@ Route::get('/dormshop/token-listrik', [DormshopTokenListrikController::class, 'i
 
 // Rute untuk menyimpan transaksi token listrik
 Route::post('/dormshop/pembayaran-listrik', [DormshopTokenListrikController::class, 'store'])->name('dormshop.pembayaran_listrik.store');
-
-
+// disable filament login
+Route::redirect('/admin/login', '/login');
