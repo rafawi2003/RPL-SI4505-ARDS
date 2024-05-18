@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +9,7 @@ class PembayaranWifi extends Model
 {
     use HasFactory;
 
-    protected $table = 'pembayaran_wifi'; // Pastikan nama tabel sesuai dengan yang ada di basis data
+    protected $table = 'pembayaran_wifi';
 
     protected $fillable = [
         'jenis_transaksi',
@@ -16,5 +17,6 @@ class PembayaranWifi extends Model
         'status_transaksi',
         'nim',
         'kamar',
+        'bukti_pembayaran',
     ];
 }
