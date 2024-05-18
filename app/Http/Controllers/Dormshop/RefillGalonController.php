@@ -2,45 +2,76 @@
 
 namespace App\Http\Controllers\Dormshop;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RefillGalon;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class RefillGalonController extends Controller
 {
-    // Harga per galon
-    private $hargaPerGalon = 18000; // 18.000
-
     public function index()
     {
-        // Ambil harga per galon dari properti privat
-        $hargaPerGalon = $this->hargaPerGalon;
-
-        // Kirim harga per galon ke view bersamaan dengan view
+        $hargaPerGalon = 18000; // Atur harga per galon sesuai kebutuhan
         return view('dormshop.refill_galon', compact('hargaPerGalon'));
     }
 
     public function store(Request $request)
     {
-        // Validasi input dari form
         $request->validate([
-            'jumlah_galon' => 'required|numeric|min:1'
+            'nim' => 'required|string|max:255',
+            'nomor_kamar' => 'required|string|max:255',
+            'jumlah_galon' => 'required|integer|min:1',
+            'metode_pembayaran' => 'required|string|in:bayar_di_tempat,transfer_bank',
         ]);
 
-        // Hitung total harga
-        $totalHarga = $this->hargaPerGalon * $request->jumlah_galon;
+        $hargaPerGalon = 18000; // Atur harga per galon sesuai kebutuhan
+        $totalHarga = $request->jumlah_galon * $hargaPerGalon;
 
-        // Simpan transaksi pengisian galon ke database
-        RefillGalon::create([
-            'nim' => Auth::user()->nim, // Menggunakan nim pengguna yang sedang login
-            'nomor_kamar' => Auth::user()->kamar, // Menggunakan nomor kamar pengguna yang sedang login
+        $refillGalon = RefillGalon::create([
+            'nim' => strtolower($request->nim),
+            'nomor_kamar' => strtolower($request->nomor_kamar),
             'jumlah_galon' => $request->jumlah_galon,
             'total_harga' => $totalHarga,
-            // Tambahkan kolom lain yang sesuai dengan kebutuhan Anda
+            'metode_pembayaran' => $request->metode_pembayaran,
         ]);
 
-        // Redirect kembali ke halaman pengisian galon dengan pesan sukses
-        return redirect()->route('refill_galon.index')->with('success', 'Pengisian galon berhasil. Total harga: Rp ' . number_format($totalHarga, 0, ',', '.'));
+        if ($request->metode_pembayaran == 'transfer_bank') {
+            return redirect()->route('upload_bukti_pembayaran', ['total' => $totalHarga]);
+        } else {
+            return redirect()->route('pesanan_berhasil');
+        }
+    }
+
+    public function showUploadForm(Request $request)
+    {
+        $total = $request->input('total');
+        return view('dormshop.upload_bukti_pembayaran', compact('total'));
+    }
+
+    public function uploadBuktiBayar(Request $request)
+    {
+        $request->validate([
+            'bukti_pembayaran' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048',
+        ]);
+
+        if ($request->file('bukti_pembayaran')) {
+            $file = $request->file('bukti_pembayaran');
+            $path = $file->store('public/bukti_pembayaran');
+
+            // Simpan path bukti pembayaran ke database
+            $refillGalon = RefillGalon::where('nim', auth()->user()->nim)->orderBy('created_at', 'desc')->first();
+            if ($refillGalon) {
+                $refillGalon->update(['bukti_pembayaran' => $path]);
+                return redirect()->route('pesanan_berhasil');
+            } else {
+                return back()->withErrors(['bukti_pembayaran' => 'Data RefillGalon tidak ditemukan.']);
+            }
+        }
+
+        return back()->withErrors(['bukti_pembayaran' => 'Unggah bukti pembayaran gagal.']);
+    }
+
+    public function pesananBerhasil()
+    {
+        return view('dormshop.pesanan_berhasil');
     }
 }
