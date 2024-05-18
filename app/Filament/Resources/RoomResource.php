@@ -30,7 +30,7 @@ class RoomResource extends Resource
             ->schema([
                 Card::make()
                 ->schema([
-                    Select::make('penghuni')->unique(ignorable: fn($record) => $record),
+                    TextInput::make('penghuni')->unique(ignorable: fn($record) => $record),
                     Select::make('gender')->options([
                         'Putra' => 'Putra',
                         'Putri'=> 'Putri',

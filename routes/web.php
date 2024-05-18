@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\kamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,5 +68,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', [HomeController::class,'index']);
 
 Route::post('/dashboard', [ProfileController::class, 'checkin'])->name('profile.checkin');
+
+Route::get('/kamar', [kamarController::class, 'index'])->name('kamar');
+
+Route::get('/gedungs', [\App\Http\Controllers\GedungController::class, 'index'])->name('gedungs.index');
+Route::get('/gedungs/{gedung}', [\App\Http\Controllers\GedungController::class, 'show'])->name('gedungs.show');
 
 require __DIR__.'/auth.php';

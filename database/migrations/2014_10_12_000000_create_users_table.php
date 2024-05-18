@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kamar')->nullable();
             $table->string('status')->nullable();
             $table->string('nim')->nullable();
-            $table->enum('gender')->nullable();
+            $table->string('gender')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
