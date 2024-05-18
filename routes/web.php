@@ -3,11 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
 use App\Http\Controllers\Dormshop\PembayaranAirController;
 use App\Http\Controllers\Dormshop\PembayaranWifiController;
 use App\Http\Controllers\Dormshop\RefillGalonController;
+=======
+use App\Http\Controllers\kamarController;
+>>>>>>> ccacb88dd59c5bd38e7d518af2936f6353286d80
 
 /*
 |--------------------------------------------------------------------------
@@ -66,10 +70,17 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); 
 });
 
 Route::get('/home', [HomeController::class,'index']);
+
+Route::post('/dashboard', [ProfileController::class, 'checkin'])->name('profile.checkin');
+
+Route::get('/kamar', [kamarController::class, 'index'])->name('kamar');
+
+Route::get('/gedungs', [\App\Http\Controllers\GedungController::class, 'index'])->name('gedungs.index');
+Route::get('/gedungs/{gedung}', [\App\Http\Controllers\GedungController::class, 'show'])->name('gedungs.show');
 
 require __DIR__.'/auth.php';
 

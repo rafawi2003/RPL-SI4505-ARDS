@@ -200,7 +200,7 @@
         </p>
         <div class="d-grid gap-3 d-md-flex justify-content-md-center">
         @auth
-                <a href="{{ url('/dashboard') }}" class="btn btn-lg btn-login me-md-2">Dashboard</a>
+                <a href="{{ url('/home') }}" class="btn btn-lg btn-login me-md-2">Home</a>
             @else
                 <a href="{{ route('login') }}" class="btn btn-lg btn-login me-md-2">Masuk</a>
 

@@ -33,7 +33,9 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'kamar' => ['nullable', 'string', 'max:255'],
+            'status' => ['nullable', 'string', 'max:255'],
             'nim' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'jurusan' => ['nullable', 'string', 'max:255'],
@@ -45,7 +47,9 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'kamar' => $request->kamar,
+            'status' => $request->status,
             'nim' => $request->nim,
+            'gender' => $request->gender,
             'email' => strtolower($request->email),
             'password' => Hash::make($request->password),
             'jurusan' => $request->jurusan,
@@ -60,4 +64,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
 }

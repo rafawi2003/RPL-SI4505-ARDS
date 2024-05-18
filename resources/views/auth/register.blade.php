@@ -40,9 +40,9 @@
         </div>
 
         <div class="hidden">
-            <x-input-label for="kamar" :value="__('Kamar')" />
-            <x-text-input id="kamar" class="block mt-1 w-full" type="text" name="kamar" :value="'Menunggu Update oleh Admin'" />
-            <x-input-error :messages="$errors->get('kamar')" class="mt-2" />
+            <x-input-label for="status" :value="__('status')" />
+            <x-text-input id="status" class="block mt-1 w-full" type="text" name="status" :value="'Belum Melakukan Check-in'" />
+            <x-input-error :messages="$errors->get('status')" class="mt-2" />
         </div>
 
         <!-- NIM -->
@@ -51,6 +51,18 @@
             <x-text-input id="nim" class="block mt-1 w-full" type="text" name="nim" :value="old('nim')" required autofocus autocomplete="nim" pattern="[0-9]*" />
             <x-input-error :messages="$errors->get('nim')" class="mt-2" />
         </div>
+
+        <!-- Gender -->
+        <div>
+            <x-input-label for="gender" :value="__('Jenis Kelamin')" />
+            <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required autocomplete="gender">
+                <option value="" selected disabled>Pilih jenis kelamin</option>
+                <option value="putra">Laki-laki</option>
+                <option value="putri">Perempuan</option>
+            </select>
+            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+        </div>
+
 
                 <!-- Input untuk Jurusan -->
         <div class="mt-4">
