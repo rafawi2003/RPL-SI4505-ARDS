@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\kamarController;
+use App\Http\Controllers\AsramaController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Dormshop\RefillGalonController;
 use App\Http\Controllers\Dormshop\PembayaranAirController;
 use App\Http\Controllers\Dormshop\PembayaranWifiController;
-use App\Http\Controllers\Dormshop\RefillGalonController;
+use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
 
 
 /*
@@ -75,10 +75,11 @@ Route::get('/home', [HomeController::class,'index']);
 
 Route::post('/dashboard', [ProfileController::class, 'checkin'])->name('profile.checkin');
 
-Route::get('/kamar', [kamarController::class, 'index'])->name('kamar');
+Route::get('/kamar', [AsramaController::class, 'index'])->name('kamar.index')->middleware(['auth', 'verified'])->name('kamar');;
 
-Route::get('/gedungs', [\App\Http\Controllers\GedungController::class, 'index'])->name('gedungs.index');
-Route::get('/gedungs/{gedung}', [\App\Http\Controllers\GedungController::class, 'show'])->name('gedungs.show');
+Route::get('/kamar/{gender}/{gedung}', [AsramaController::class, 'show'])->name('asrama.show');
+
+
 
 require __DIR__.'/auth.php';
 

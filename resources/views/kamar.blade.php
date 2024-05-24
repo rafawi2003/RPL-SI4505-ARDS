@@ -8,13 +8,23 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <p>Asrama Telkom University memiliki letak yang sangat strategis karena dekat dengan gedung kuliah umum (Gd. Tokong Nanas 10 lantai). Asrama ini menjadi salah satu sarana kampus yang dibangun untuk tempat tinggal Mahasiswa/i baru pada 1 tahun pertama masa perkuliahan di Telkom University sehingga para orang tua tidak perlu khawatir meninggalkan putra dan putri untuk melanjutkan studinya.Setiap gedung asrama memiliki kakak asrama yang biasa disebut sebagai Senior Residents serta Helpdesk di setiap lantai dasar gedung sehingga kenyamanan dan keamanan akan tetap terjaga. Selain itu, kegiatan pembinaan terhadap mahasiswa/i yang tinggal di asrama akan diawasi secara rutin oleh Direktorat Kemahasiswaan Telkom University.</p>
-                    <img src="https://qs.telkomuniversity.ac.id/wp-content/uploads/2022/12/asrama.jpeg" alt="Asrama Telkom University" class="about-image">
-
-                    <h3 class="font-semibold text-lg mt-6">Daftar Gedung</h3>
-                    <a href="{{ route('gedung.show', 'A01') }}">Gedung A01</a>
-                    <a href="{{ route('gedung.show', 'A02') }}">Gedung A02</a>
+                <div class="p-6 bg-gray-100 border-b border-gray-200">
+                    <h1 class="text-3xl font-bold text-gray-800">Gedung Asrama</h1>
+                    <p class="mt-2 text-lg text-gray-600"></p>
+                </div>
+                <div class="p-6 bg-gray-100 border-t border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4"></h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <a href="{{ route('putra.index') }}" class="bg-white rounded-lg shadow-md p-4 block hover:bg-gray-50 transition duration-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Gedung Asrama Putra</h3>
+                            <p class="text-gray-600"></p>
+                        </a>
+                        <a href="{{ route('putri.index') }}" class="bg-white rounded-lg shadow-md p-4 block hover:bg-gray-50 transition duration-200">
+                            <h3 class="text-lg font-semibold text-gray-800">Gedung Asrama Putri</h3>
+                            <p class="text-gray-600"></p>
+                        </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

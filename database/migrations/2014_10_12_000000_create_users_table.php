@@ -22,10 +22,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('usertype')->default('penghuni');
-            $table->string('jurusan')->nullable(); // tambahkan kolom jurusan
-            $table->string('nama_ibu')->nullable(); // tambahkan kolom nama_ibu
-            $table->string('nomor_telepon')->nullable(); // tambahkan kolom nomor_telepon
-            $table->string('telefon_darurat')->nullable(); // tambahkan kolom telefon_darurat
+            $table->string('jurusan')->nullable();
+            $table->string('nama_ibu')->nullable(); 
+            $table->string('nomor_telepon')->nullable(); 
+            $table->string('telefon_darurat')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
