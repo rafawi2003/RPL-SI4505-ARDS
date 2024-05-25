@@ -17,7 +17,7 @@
                                     Check In
                                 </button>
                             </form>
-                        @elseif(Auth::check() && Auth::user()->status == 'Menunggu Update oleh Admin')
+                        @elseif(Auth::check() && Auth::user()->status == 'Menunggu Update Kamar oleh Admin')
                             <p>Anda sudah melakukan Check-in, namun kamar Anda sedang menunggu update oleh Admin.</p>
                         @endif
                     @else

@@ -9,7 +9,8 @@ use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
 use App\Http\Controllers\Dormshop\PembayaranAirController;
 use App\Http\Controllers\Dormshop\PembayaranWifiController;
 use App\Http\Controllers\Dormshop\RefillGalonController;
-
+use Illuminate\Http\Request;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -150,5 +151,10 @@ Route::get('/dormshop/token-listrik', [DormshopTokenListrikController::class, 'i
 
 // Rute untuk menyimpan transaksi token listrik
 Route::post('/dormshop/pembayaran-listrik', [DormshopTokenListrikController::class, 'store'])->name('dormshop.pembayaran_listrik.store');
+// disable filament login
+Route::redirect('/admin/login', '/login');
 
-
+Route::get('/api/events', function (Request $request) {
+    $events = Event::all(); // Assuming you have an Event model
+    return response()->json($events);
+});
