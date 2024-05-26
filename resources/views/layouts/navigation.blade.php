@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('tentang')" :active="request()->routeIs('tentang')">
                         {{ __('Tentang') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('perizinan')" :active="request()->routeIs('perizinan')">
+                    <x-nav-link :href="route('izin.index')" :active="request()->routeIs('izin.index')">
                         {{ __('Perizinan') }}
                     </x-nav-link>
                     <x-nav-link :href="route('kalender')" :active="request()->routeIs('kalender')">
@@ -98,7 +98,7 @@
             <x-responsive-nav-link :href="route('tentang')" :active="request()->routeIs('tentang')">
                 {{ __('Tentang') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('perizinan')" :active="request()->routeIs('perizinan')">
+            <x-responsive-nav-link :href="route('izin.index')" :active="request()->routeIs('izin.index')">
                 {{ __('Perizinan') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kalender')" :active="request()->routeIs('kalender')">

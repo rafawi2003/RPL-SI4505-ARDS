@@ -11,6 +11,7 @@ use App\Http\Controllers\Dormshop\PembayaranWifiController;
 use App\Http\Controllers\Dormshop\RefillGalonController;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Http\Controllers\IzinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,11 +57,6 @@ Route::get('/pemberitahuan', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('pemberitahuan');
 
-Route::get('/perizinan', function () {
-    return view('perizinan' ,[
-    ]);
-    
-})->middleware(['auth', 'verified'])->name('perizinan');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -70,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); 
+    // Route untuk pengunduran diri
+    Route::post('/profile/resign', [ProfileController::class, 'resign'])->name('profile.resign');
 });
 
 Route::get('/home', [HomeController::class,'index']);
@@ -158,3 +156,14 @@ Route::get('/api/events', function (Request $request) {
     $events = Event::all(); // Assuming you have an Event model
     return response()->json($events);
 });
+
+// Route untuk menampilkan daftar perizinan
+Route::get('/izin', [IzinController::class, 'index'])->name('izin.index');
+
+// Route untuk menampilkan form perizinan baru
+Route::get('/izin/create', [IzinController::class, 'create'])->name('izin.create');
+
+// Route untuk menyimpan data perizinan baru
+Route::post('/izin', [IzinController::class, 'store'])->name('izin.store');
+
+
