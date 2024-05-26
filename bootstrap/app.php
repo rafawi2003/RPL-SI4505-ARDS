@@ -3,6 +3,7 @@
 /*
 |--------------------------------------------------------------------------
 | Create The Application
+123
 |--------------------------------------------------------------------------
 |
 | The first thing we will do is create a new Laravel application instance
