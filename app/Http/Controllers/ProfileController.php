@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash; 
+
 
 class ProfileController extends Controller
 {
@@ -79,4 +81,20 @@ class ProfileController extends Controller
     
         return redirect()->route('dashboard')->with('status', 'Check In berhasil. Kamar Anda sedang menunggu update oleh Admin.');
     }
+    public function resign(Request $request): RedirectResponse
+{
+    $request->validateWithBag('userResignation', [
+        'password' => ['required', 'current_password'],
+    ]);
+
+    // Perbarui status akun jika kata sandi benar
+    $user = $request->user();
+    $user->status = 'Proses Pengunduran Diri';
+    $user->kamar = '-'; // Set kamar
+    $user->save();
+
+    return Redirect::to('/dashboard');
 }
+
+}
+
