@@ -17,7 +17,8 @@
                         </script>
                     @endif
 
-                    <h1 class="mb-4 text-xl font-bold">Daftar Perizinan</h1>
+                    <h1 class="mb-4 text-xl font-bold text-center">Daftar Perizinan Anda</h1>
+
 
                     <div class="flex justify-start mb-4">
                         <a href="{{ route('izin.create') }}" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Buat Perizinan</a>
