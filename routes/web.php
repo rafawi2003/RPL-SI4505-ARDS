@@ -2,14 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AsramaController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Dormshop\RefillGalonController;
+use App\Http\Controllers\kamarController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
 use App\Http\Controllers\Dormshop\PembayaranAirController;
 use App\Http\Controllers\Dormshop\PembayaranWifiController;
-use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
-
+use App\Http\Controllers\Dormshop\RefillGalonController;
+use Illuminate\Http\Request;
+use App\Models\Event;
+use App\Http\Controllers\IzinController;
+use App\Http\Controllers\AsramaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,11 +58,6 @@ Route::get('/pemberitahuan', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('pemberitahuan');
 
-Route::get('/perizinan', function () {
-    return view('perizinan' ,[
-    ]);
-    
-})->middleware(['auth', 'verified'])->name('perizinan');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -69,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); 
+    // Route untuk pengunduran diri
+    Route::post('/profile/resign', [ProfileController::class, 'resign'])->name('profile.resign');
 });
 
 Route::get('/home', [HomeController::class,'index']);
@@ -79,13 +79,11 @@ Route::get('/kamar', [AsramaController::class, 'index'])->name('kamar.index')->m
 
 Route::get('/kamar/{gender}/{gedung}', [AsramaController::class, 'show'])->name('asrama.show');
 
-
-
 require __DIR__.'/auth.php';
 
 Route::get('/dormshop', function () {
     return view('dormshop.index');
-})->name('dormshop');
+})->middleware(['auth', 'verified'])->name('dormshop');
 
 
 // Rute-rute dalam middleware 'auth'
@@ -151,5 +149,21 @@ Route::get('/dormshop/token-listrik', [DormshopTokenListrikController::class, 'i
 
 // Rute untuk menyimpan transaksi token listrik
 Route::post('/dormshop/pembayaran-listrik', [DormshopTokenListrikController::class, 'store'])->name('dormshop.pembayaran_listrik.store');
+// disable filament login
+Route::redirect('/admin/login', '/login');
+
+Route::get('/api/events', function (Request $request) {
+    $events = Event::all(); // Assuming you have an Event model
+    return response()->json($events);
+});
+
+// Route untuk menampilkan daftar perizinan
+Route::get('/izin', [IzinController::class, 'index'])->name('izin.index');
+
+// Route untuk menampilkan form perizinan baru
+Route::get('/izin/create', [IzinController::class, 'create'])->name('izin.create');
+
+// Route untuk menyimpan data perizinan baru
+Route::post('/izin', [IzinController::class, 'store'])->name('izin.store');
 
 

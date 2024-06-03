@@ -1,4 +1,4 @@
-<!-- resources/views/asrama/show.blade.php -->
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -16,23 +16,17 @@
                     <table class="table-auto w-full">
                         <thead>
                             <tr>
-                                <th class="px-4 py-2">Lantai</th>
-                                <th class="px-4 py-2">Kamar</th>
-                                <th class="px-4 py-2">Tempat Tidur 1</th>
-                                <th class="px-4 py-2">Tempat Tidur 2</th>
-                                <th class="px-4 py-2">Tempat Tidur 3</th>
-                                <th class="px-4 py-2">Tempat Tidur 4</th>
+                                <th class="px-4 py-2 text-center">Lantai</th>
+                                <th class="px-4 py-2 text-center">Kamar</th>
+                                <th class="px-4 py-2 text-center">Penghuni</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($rooms as $room)
                                 <tr>
-                                    <td class="border px-4 py-2">{{ $room->lantai }}</td>
-                                    <td class="border px-4 py-2">{{ $room->kamar }}</td>
-                                    <td class="border px-4 py-2">{{ $room->bed1User ? $room->bed1User->$name : '' }}</td>
-                                    <td class="border px-4 py-2">{{ $room->bed2User ? $room->bed2User->$name : '' }}</td>
-                                    <td class="border px-4 py-2">{{ $room->bed3User ? $room->bed3User->$name : '' }}</td>
-                                    <td class="border px-4 py-2">{{ $room->bed4User ? $room->bed4User->$name : '' }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $room->lantai }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $room->kamar }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $room->penghuni}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

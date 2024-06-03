@@ -57,4 +57,8 @@ class Room extends Model
     {
         return $this->belongsTo(User::class, 'bed_4', 'nim');
     }
+    public function user()
+{
+    return $this->hasOne(User::class, 'kamar', 'kamar');
+}
 }
