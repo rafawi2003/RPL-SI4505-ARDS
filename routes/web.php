@@ -1,17 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\kamarController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AsramaController;
 use App\Http\Controllers\Dormshop\DormshopTokenListrikController;
 use App\Http\Controllers\Dormshop\PembayaranAirController;
 use App\Http\Controllers\Dormshop\PembayaranWifiController;
 use App\Http\Controllers\Dormshop\RefillGalonController;
-use Illuminate\Http\Request;
-use App\Models\Event;
+use App\Http\Controllers\HelpController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IzinController;
+use App\Http\Controllers\kamarController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Event;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,21 +44,10 @@ Route::get('/dormshop', function () {
     ]);
 })->name('dormshop');
 
-Route::get('/helpdesk', function () {
-    return view('helpdesk' ,[
-        
-    ]);
-})->middleware(['auth', 'verified'])->name('helpdesk');
-
 Route::get('/kalender', function () {
     return view('kalender' ,[
     ]);
 })->middleware(['auth', 'verified'])->name('kalender');
-
-Route::get('/pemberitahuan', function () {
-    return view('pemberitahuan' ,[
-    ]);
-})->middleware(['auth', 'verified'])->name('pemberitahuan');
 
 
 Route::get('/dashboard', function () {
@@ -74,16 +66,11 @@ Route::get('/home', [HomeController::class,'index']);
 
 Route::post('/dashboard', [ProfileController::class, 'checkin'])->name('profile.checkin');
 
-Route::get('/kamar', [kamarController::class, 'index'])->name('kamar');
-
-Route::get('/gedungs', [\App\Http\Controllers\GedungController::class, 'index'])->name('gedungs.index');
-Route::get('/gedungs/{gedung}', [\App\Http\Controllers\GedungController::class, 'show'])->name('gedungs.show');
-
 require __DIR__.'/auth.php';
 
 Route::get('/dormshop', function () {
     return view('dormshop.index');
-})->name('dormshop');
+})->middleware(['auth', 'verified'])->name('dormshop');
 
 
 // Rute-rute dalam middleware 'auth'
@@ -158,12 +145,25 @@ Route::get('/api/events', function (Request $request) {
 });
 
 // Route untuk menampilkan daftar perizinan
-Route::get('/izin', [IzinController::class, 'index'])->name('izin.index');
+Route::get('/izin', [IzinController::class, 'index'])->middleware(['auth', 'verified'])->name('izin.index');
 
 // Route untuk menampilkan form perizinan baru
-Route::get('/izin/create', [IzinController::class, 'create'])->name('izin.create');
+Route::get('/izin/create', [IzinController::class, 'create'])->middleware(['auth', 'verified'])->name('izin.create');
 
 // Route untuk menyimpan data perizinan baru
-Route::post('/izin', [IzinController::class, 'store'])->name('izin.store');
+Route::post('/izin', [IzinController::class, 'store'])->middleware(['auth', 'verified'])->name('izin.store');
 
+Route::get('/kamar', [AsramaController::class, 'index'])->name('kamar.index')->middleware(['auth', 'verified']);
 
+Route::get('/kamar/{gender}/{gedung}', [AsramaController::class, 'show'])->name('asrama.show');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Route for displaying the help requests list
+    Route::get('/helpdesk', [HelpController::class, 'index'])->name('help.index');
+
+    // Route for displaying the form for creating a new help request
+    Route::get('/helpdesk/create', [HelpController::class, 'create'])->name('help.create');
+
+    // Route for storing a new help request
+    Route::post('/helpdesk', [HelpController::class, 'store'])->name('help.store');
+});

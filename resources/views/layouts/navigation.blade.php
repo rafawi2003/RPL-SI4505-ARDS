@@ -18,21 +18,22 @@
                     <x-nav-link :href="route('tentang')" :active="request()->routeIs('tentang')">
                         {{ __('Tentang') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('izin.index')" :active="request()->routeIs('izin.index')">
-                        {{ __('Perizinan') }}
+                    <x-nav-link :href="route('kamar.index')" :active="request()->routeIs('kamar.index')">
+                        {{ __('Informasi Kamar') }}
                     </x-nav-link>
                     <x-nav-link :href="route('kalender')" :active="request()->routeIs('kalender')">
                         {{ __('Kalender') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('izin.index')" :active="request()->routeIs('izin.index')">
+                        {{ __('Perizinan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('help.index')" :active="request()->routeIs('help.index')">
+                        {{ __('Helpdesk') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('dormshop')" :active="request()->routeIs('dormshop')">
                         {{ __('Dormshop') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('helpdesk')" :active="request()->routeIs('helpdesk')">
-                        {{ __('Helpdesk') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('pemberitahuan')" :active="request()->routeIs('pemberitahuan')">
-                        {{ __('Pemberitahuan') }}
-                    </x-nav-link>
+                    
                 </div>
             </div>
 
@@ -98,20 +99,20 @@
             <x-responsive-nav-link :href="route('tentang')" :active="request()->routeIs('tentang')">
                 {{ __('Tentang') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('izin.index')" :active="request()->routeIs('izin.index')">
-                {{ __('Perizinan') }}
+            <x-responsive-nav-link :href="route('kamar.index')" :active="request()->routeIs('kamar.index')">
+                {{ __('Informasi Kamar') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('kalender')" :active="request()->routeIs('kalender')">
                 {{ __('Kalender') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dormshop')" :active="request()->routeIs('dormshop')">
-                {{ __('Dormshop') }}
+            <x-responsive-nav-link :href="route('izin.index')" :active="request()->routeIs('izin.index')">
+                {{ __('Perizinan') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('helpdesk')" :active="request()->routeIs('helpdesk')">
+            <x-responsive-nav-link :href="route('help.index')" :active="request()->routeIs('help.index')">
                 {{ __('Helpdesk') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('pemberitahuan')" :active="request()->routeIs('pemberitahuan')">
-                {{ __('Pemberitahuan') }}
+            <x-responsive-nav-link :href="route('dormshop')" :active="request()->routeIs('dormshop')">
+                {{ __('Dormshop') }}
             </x-responsive-nav-link>
         </div>
 

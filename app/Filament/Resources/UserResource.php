@@ -23,23 +23,22 @@ class UserResource extends Resource
     public static function saved(Form $form, User $user): void
     {
        
-        \Log::info('Metode saved dipanggil untuk pengguna penghuni ' . $user->name);
-        // ...s
+      
     
         if ($form->getModel()->isDirty('kamar')) {
-            \Log::info('Kolom kamar berubah untuk pengguna ' . $user->name);
+            
             $kamarBaru = $form->getModel()->getAttribute('kamar');
-            \Log::info('Kamar baru: ' . $kamarBaru);
+         
         }
     
         $room = Room::where('kamar', $kamarBaru)->first();
         if ($room) {
-            \Log::info('Kamar ditemukan: ' . $room->kamar);
+           
             $room->penghuni = $user->nim;
             $saved = $room->save();
-            \Log::info('Penyimpanan penghuni: ' . ($saved ? 'Berhasil' : 'Gagal'));
+          
         } else {
-            \Log::warning('Kamar dengan nomor ' . $kamarBaru . ' tidak ditemukan');
+           
         }
     }
     protected static ?string $model = User::class;
