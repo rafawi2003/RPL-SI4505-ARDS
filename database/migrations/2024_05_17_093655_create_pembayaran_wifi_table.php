@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePembayaranWifiTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -16,6 +16,7 @@ class CreatePembayaranWifiTable extends Migration
             $table->string('nim');
             $table->string('kamar');
             $table->string('bukti_pembayaran')->nullable();
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }
@@ -24,4 +25,4 @@ class CreatePembayaranWifiTable extends Migration
     {
         Schema::dropIfExists('pembayaran_wifi');
     }
-}
+};

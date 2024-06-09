@@ -19,7 +19,6 @@
 
                     <h1 class="mb-4 text-xl font-bold text-center">Daftar Permintaan Bantuan Anda</h1>
 
-
                     <div class="flex justify-start mb-4">
                         <a href="{{ route('help.create') }}" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Buat Permintaan</a>
                     </div>
@@ -31,6 +30,7 @@
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border">No</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border">Permintaan</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border">Updated At</th> <!-- Kolom baru untuk Updated At -->
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -48,6 +48,7 @@
                                                 {{ ucwords($help->status) }}
                                             </span>
                                         </td>
+                                        <td class="px-6 py-4 whitespace-nowrap border">{{ $help->updated_at }}</td> <!-- Kolom baru untuk Updated At -->
                                     </tr>
                                 @empty
                                     <tr>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTokenListriksTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -16,6 +16,7 @@ class CreateTokenListriksTable extends Migration
             $table->string('NIM', 255);
             $table->string('nama_pengguna')->nullable();
             $table->string('bukti_pembayaran')->nullable(); // Tambahkan kolom bukti_pembayaran
+            $table->string('token', 20)->nullable();
             $table->timestamps();
         });
     }
@@ -24,4 +25,4 @@ class CreateTokenListriksTable extends Migration
     {
         Schema::dropIfExists('token_listriks');
     }
-}
+};

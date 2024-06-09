@@ -14,6 +14,12 @@
         @method('patch')
 
         <div>
+            <x-input-label for="status" :value="__('Status')" />
+            <x-text-input id="status" name="status" type="text" class="mt-1 block w-full" :value="$user->status" required autofocus readonly style="background-color: #f4f4f4; opacity: 0.7; color: #666;" />
+            <x-input-error class="mt-2" :messages="$errors->get('status')" />
+        </div>
+
+        <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="$user->name" required autofocus readonly style="background-color: #f4f4f4; opacity: 0.7; color: #666;" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
