@@ -17,30 +17,10 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\UserResource\RelationManagers;
+use Illuminate\Support\Facades\Log;
 
 class UserResource extends Resource
 {
-    public static function saved(Form $form, User $user): void
-    {
-       
-      
-    
-        if ($form->getModel()->isDirty('kamar')) {
-            
-            $kamarBaru = $form->getModel()->getAttribute('kamar');
-         
-        }
-    
-        $room = Room::where('kamar', $kamarBaru)->first();
-        if ($room) {
-           
-            $room->penghuni = $user->nim;
-            $saved = $room->save();
-          
-        } else {
-           
-        }
-    }
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
@@ -53,18 +33,21 @@ class UserResource extends Resource
                     ->schema([
                         TextInput::make('nim')->unique(ignorable: fn($record) => $record),
                         TextInput::make('name'),
-                        TextInput::make('status'),
-                        Select::make('gender')->options([
-                            'putra' => 'Putra',
-                            'putri'=> 'Putri',
-                        ]),
+                                                
+                        Select::make('status')
+                           
+                            ->options([
+                                null => 'Null',
+                                'Belum Melakukan Check-in' => 'Belum Melakukan Check-in',
+                                'Menunggu Update Kamar oleh Admin' => 'Menunggu Update Kamar oleh Admin',
+                                'Proses Pengunduran Diri' => 'Proses Pengunduran Diri',
+                                'Mohon Hubungi Admin' => 'Mohon Hubungi Admin'
+                            ]),
                         
+                            
                         Select::make('kamar')
                             ->options(function (callable $get) {
-                                // Ambil jenis kelamin (gender) yang dipilih oleh pengguna
                                 $gender = $get('gender');
-
-                                // Ambil daftar kamar yang belum dihuni (penghuni = null) dan sesuai dengan gender
                                 $availableRooms = Room::whereNull('penghuni')
                                     ->where(function ($query) use ($gender) {
                                         if ($gender === 'putra') {
@@ -74,26 +57,21 @@ class UserResource extends Resource
                                         }
                                     })
                                     ->pluck('kamar', 'kamar');
-
-                                // Format daftar kamar sesuai kebutuhan
                                 $options = [];
                                 foreach ($availableRooms as $kamar) {
-                                    // Ubah nilai null menjadi string kosong
                                     $label = $kamar ?? '';
                                     $options[$kamar] = $label;
                                 }
-                                
                                 return $options;
                             }),
-                       
                         TextInput::make('email'),
                         Select::make('jurusan')->options([
-                            'D3 Teknik Telekomunikasi'=>'D3 Teknik Telekomunikasi', 
-                            'D3 Teknik Informatika'=>'D3 Teknik Informatika', 
-                            'D3 Sistem Informasi'=>'D3 Sistem Informasi',
-                            'D3 Teknik Komputer'=>'D3 Teknik Komputer',
-                            'D3 Digital Accounting (Sistem Informasi Akuntansi)'=>'D3 Digital Accounting (Sistem Informasi Akuntansi)',
-                            'D3 Digital Marketing'=>'D3 Digital Marketing',
+                            'D3 Teknik Telekomunikasi' => 'D3 Teknik Telekomunikasi',
+                            'D3 Teknik Informatika' => 'D3 Teknik Informatika',
+                            'D3 Sistem Informasi' => 'D3 Sistem Informasi',
+                            'D3 Teknik Komputer' => 'D3 Teknik Komputer',
+                            'D3 Digital Accounting (Sistem Informasi Akuntansi)' => 'D3 Digital Accounting (Sistem Informasi Akuntansi)',
+                            'D3 Digital Marketing' => 'D3 Digital Marketing',
                             'S1 Terapan Digital Creative Multimedia (DCM)' => 'S1 Terapan Digital Creative Multimedia (DCM)',
                             'S1 Teknik Telekomunikasi' => 'S1 Teknik Telekomunikasi',
                             'S1 Teknik Telekomunikasi (International Class)' => 'S1 Teknik Telekomunikasi (International Class)',
@@ -131,18 +109,14 @@ class UserResource extends Resource
                             'S1 Rekayasa Perangkat Lunak' => 'S1 Rekayasa Perangkat Lunak',
                             'S1 Teknologi Informasi' => 'S1 Teknologi Informasi',
                             'S1 Data Sains' => 'S1 Data Sains'
-    
-                            ]),
+                        ]),
                         TextInput::make('nama_ibu'),
                         TextInput::make('nomor_telepon'),
                         TextInput::make('telefon_darurat'),
                         Select::make('usertype')->options([
                             'admin' => 'admin',
-                            'penghuni'=> 'penghuni',
+                            'penghuni' => 'penghuni',
                         ]),
-                        
-                        
-
                     ])
                     ->columns(2)
             ]);
@@ -169,12 +143,11 @@ class UserResource extends Resource
             ]);
     }
 
-    
     public static function getRelations(): array
     {
         return [];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -182,5 +155,30 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    public static function saved(Form $form, User $user): void
+    {
+        Log::info('saved method triggered');
+        if ($user->isDirty('kamar')) {
+            Log::info('kamar field is dirty');
+            $kamarBaru = $user->kamar;
+            Log::info('kamarBaru: ' . $kamarBaru);
+
+            if ($kamarBaru) {
+                $room = Room::where('kamar', $kamarBaru)->first();
+                if ($room) {
+                    $room->penghuni = $user->nim;
+                    $saved = $room->save();
+                    Log::info('Room update status: ' . ($saved ? 'success' : 'failed'));
+                } else {
+                    Log::info('Room not found for kamar: ' . $kamarBaru);
+                }
+            } else {
+                Log::info('$kamarBaru is not set');
+            }
+        } else {
+            Log::info('kamar field is not dirty');
+        }
+    }
 }

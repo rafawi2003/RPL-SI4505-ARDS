@@ -23,7 +23,7 @@ class AsramaController extends Controller
     {
         $rooms = Room::where('gender', $gender)
         ->where('gedung', $gedung)
-        ->with('bed1User', 'bed2User', 'bed3User', 'bed4User')
+        
         ->get();
 
     return view('kamar.show', compact('rooms', 'gender', 'gedung'));

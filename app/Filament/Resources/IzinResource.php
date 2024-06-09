@@ -52,7 +52,9 @@ class IzinResource extends Resource
             ->columns([
                 TextColumn::make('nim')->sortable()->searchable(),
                 TextColumn::make('alasan')->sortable()->searchable(),
-                TextColumn::make('status')->sortable()->searchable()
+                TextColumn::make('status')->sortable()->searchable(),
+                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('updated_at')->dateTime(),
 
             ])
             ->filters([

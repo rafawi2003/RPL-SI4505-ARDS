@@ -17,7 +17,6 @@ use App\Filament\Resources\RoomResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\RoomResource\RelationManagers;
 
-
 class RoomResource extends Resource
 {
     protected static ?string $model = Room::class;
@@ -30,8 +29,17 @@ class RoomResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+                        TextInput::make('kamar')
+                            ->unique(ignorable: fn ($record) => $record)
+                            ->disabled(),
                         TextInput::make('penghuni')
                             ->unique(ignorable: fn ($record) => $record),
+                            
+                       
+                    ]),
+                // Only include these fields in the create context
+                Card::make()
+                    ->schema([
                         Select::make('gender')
                             ->options([
                                 'putra' => 'Putra',
@@ -39,29 +47,29 @@ class RoomResource extends Resource
                             ])
                             ->reactive(),
                         Select::make('gedung')
-                            ->options(function (callable $get) {
-                                $gender = $get('gender');
-                                if ($gender === 'putra') {
-                                    return array_combine(
-                                        ['A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10'],
-                                        ['A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10']
-                                    );
-                                } else {
-                                    return array_combine(
-                                        ['A11', 'A12', 'B01', 'B02', 'B03', 'B04', 'B05', 'B06'],
-                                        ['A11', 'A12', 'B01', 'B02', 'B03', 'B04', 'B05', 'B06']
-                                    );
-                                }
-                            })
-                            ->reactive(),
-                        Select::make('lantai')
+                        ->options(function (callable $get) {
+                            $gender = $get('gender');
+                            if ($gender === 'putra') {
+                                return array_combine(
+                                    ['A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10'],
+                                    ['A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10']
+                                );
+                            } else {
+                                return array_combine(
+                                    ['A11', 'A12', 'B01', 'B02', 'B03', 'B04', 'B05', 'B06'],
+                                    ['A11', 'A12', 'B01', 'B02', 'B03', 'B04', 'B05', 'B06']
+                                );
+                            }
+                        })
+                        ->reactive(),
+                    Select::make('lantai')
                         ->options([
                             '1' => '1',
                             '2' => '2',
                             '3' => '3',
                             '4' => '4',
                         ])
-                            ->reactive(),
+                        ->reactive(),
                         Select::make('bed')
                             ->options([
                                 'B1' => 'B1',
@@ -101,7 +109,8 @@ class RoomResource extends Resource
                                 return $options;
                             })
                             ->reactive(),
-                    ]),
+                    ])
+                    ->visible(fn ($livewire) => $livewire instanceof Pages\CreateRoom),
             ]);
     }
 

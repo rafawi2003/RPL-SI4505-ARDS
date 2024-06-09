@@ -54,17 +54,25 @@ class TokenListrikResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('jenis_transaksi'),
-                Tables\Columns\TextColumn::make('nominal_transaksi'),
-                Tables\Columns\TextColumn::make('status_transaksi'),
-                Tables\Columns\TextColumn::make('NIM'),
-                Tables\Columns\TextColumn::make('nama_pengguna'),
+                Tables\Columns\TextColumn::make('jenis_transaksi')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('nominal_transaksi')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('status_transaksi')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('NIM')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('nama_pengguna')
+                    ->sortable(),
                 Tables\Columns\ImageColumn::make('bukti_pembayaran')
                     ->disk('public'),
-                Tables\Columns\TextColumn::make('token'),
+                Tables\Columns\TextColumn::make('token')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->sortable()
                     ->dateTime(),
             ])
             ->filters([

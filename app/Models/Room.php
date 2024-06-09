@@ -1,64 +1,51 @@
 <?php
+
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class Room extends Model
 {
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'gender', 'gedung', 'lantai', 'kamar', 'bed_1', 'bed_2', 'bed_3', 'bed_4',
+        'gender', 'gedung', 'lantai', 'kamar','penghuni'
     ];
 
     /**
-     * Update 'kamar' column in 'users' table when any bed is updated.
+     * Handle the logic when a Room model is saved.
      */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 
-        static::updating(function ($room) {
-            $beds = collect([$room->bed_1, $room->bed_2, $room->bed_3, $room->bed_4])->filter();
+        static::saved(function ($room) {
+            Log::info('Room saved event triggered');
 
-            if ($beds->isNotEmpty()) {
-                User::whereIn('nim', $beds)->update(['kamar' => $room->kamar]);
+            if ($room->wasChanged('penghuni')) {
+                Log::info('penghuni field was changed');
+                $penghuniBaru = $room->penghuni;
+
+                // Find the user associated with the penghuni
+                $user = User::where('nim', $penghuniBaru)->first();
+
+                if ($user) {
+                    $user->kamar = $room->kamar;
+                    $user->save();
+                    Log::info("User {$user->nim} assigned to kamar {$room->kamar}");
+                } else {
+                    Log::warning("User with nim {$penghuniBaru} not found");
+                }
+            } else {
+                Log::info('penghuni field was not changed');
             }
         });
     }
-
-    /**
-     * Get the user for the first bed.
-     */
-    public function bed1User()
-    {
-        return $this->belongsTo(User::class, 'bed_1', 'nim');
-    }
-
-    /**
-     * Get the user for the second bed.
-     */
-    public function bed2User()
-    {
-        return $this->belongsTo(User::class, 'bed_2', 'nim');
-    }
-
-    /**
-     * Get the user for the third bed.
-     */
-    public function bed3User()
-    {
-        return $this->belongsTo(User::class, 'bed_3', 'nim');
-    }
-
-    /**
-     * Get the user for the fourth bed.
-     */
-    public function bed4User()
-    {
-        return $this->belongsTo(User::class, 'bed_4', 'nim');
-    }
-    public function user()
-{
-    return $this->hasOne(User::class, 'kamar', 'kamar');
-}
 }
