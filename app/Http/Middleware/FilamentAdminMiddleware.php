@@ -12,7 +12,7 @@ class FilamentAdminMiddleware
         // Periksa apakah pengguna sudah masuk dan bukan admin
         if (Auth::check() && Auth::user()->usertype !== 'admin') {
             // Jika bukan admin, arahkan ke halaman login
-            return redirect('/login');
+            return redirect('/home');
         }
     
         return $next($request);
