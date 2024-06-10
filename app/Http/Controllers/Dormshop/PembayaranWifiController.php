@@ -75,7 +75,7 @@ class PembayaranWifiController extends Controller
     // Menampilkan halaman pesanan berhasil WiFi
     public function PesananBerhasil()
 {
-    return view('dormshop.pesanan_berhasil._wifi');
+    return view('dormshop.pesanan_berhasil_wifi');
 }
 
 }

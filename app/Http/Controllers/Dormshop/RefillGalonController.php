@@ -10,7 +10,7 @@ class RefillGalonController extends Controller
 {
     public function index()
     {
-        $hargaPerGalon = 18000; // Atur harga per galon sesuai kebutuhan
+        $hargaPerGalon = 18000;
         return view('dormshop.refill_galon', compact('hargaPerGalon'));
     }
 
@@ -23,7 +23,7 @@ class RefillGalonController extends Controller
             'metode_pembayaran' => 'required|string|in:bayar_di_tempat,transfer_bank',
         ]);
 
-        $hargaPerGalon = 18000; // Atur harga per galon sesuai kebutuhan
+        $hargaPerGalon = 18000;
         $totalHarga = $request->jumlah_galon * $hargaPerGalon;
 
         $refillGalon = RefillGalon::create([
@@ -55,12 +55,11 @@ class RefillGalonController extends Controller
 
         if ($request->file('bukti_pembayaran')) {
             $file = $request->file('bukti_pembayaran');
-            $path = $file->store('public/bukti_pembayaran');
+            $path = $file->store('bukti_pembayaran', 'public');
 
-            // Simpan path bukti pembayaran ke database
             $refillGalon = RefillGalon::where('nim', auth()->user()->nim)->orderBy('created_at', 'desc')->first();
             if ($refillGalon) {
-                $refillGalon->update(['bukti_pembayaran' => $path]);
+                $refillGalon->update(['bukti_pembayaran' => basename($path)]);
                 return redirect()->route('pesanan_berhasil');
             } else {
                 return back()->withErrors(['bukti_pembayaran' => 'Data RefillGalon tidak ditemukan.']);
