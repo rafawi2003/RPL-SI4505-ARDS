@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -18,7 +17,11 @@
                             <tr>
                                 <th class="px-4 py-2 text-center">Lantai</th>
                                 <th class="px-4 py-2 text-center">Kamar</th>
-                                <th class="px-4 py-2 text-center">Penghuni</th>
+                                <th class="px-4 py-2 text-center">NIM Penghuni</th>
+                                <th class="px-4 py-2 text-center">Nama Penghuni</th>
+                                <th class="px-4 py-2 text-center">Jurusan</th>
+                                <th class="px-4 py-2 text-center">Nomor Telepon</th>
+                                 <!-- Kolom baru -->
                             </tr>
                         </thead>
                         <tbody>
@@ -26,7 +29,11 @@
                                 <tr>
                                     <td class="border px-4 py-2 text-center">{{ $room->lantai }}</td>
                                     <td class="border px-4 py-2 text-center">{{ $room->kamar }}</td>
-                                    <td class="border px-4 py-2 text-center">{{ $room->penghuni}}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $room->penghuni }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $room->user ? $room->user->name : 'Tidak ada penghuni' }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $room->user ? $room->user->jurusan : 'Tidak ada jurusan' }}</td> <!-- Data jurusan -->
+                                    <td class="border px-4 py-2 text-center">{{ $room->user ? $room->user->nomor_telepon : 'Tidak ada nomor telepon' }}</td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Log;
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
-
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -22,18 +20,8 @@ class User extends Authenticatable implements FilamentUser
      * @var array
      */
     protected $fillable = [
-        'name',
-        'kamar',
-        'nim',
-        'status',
-        'gender',
-        'email',
-        'password',
-        'usertype',
-        'jurusan',
-        'nama_ibu',
-        'nomor_telepon',
-        'telefon_darurat',
+        'name', 'kamar', 'nim', 'status', 'gender', 'email', 'password',
+        'usertype', 'jurusan', 'nama_ibu', 'nomor_telepon', 'telefon_darurat',
     ];
 
     /**
@@ -42,8 +30,7 @@ class User extends Authenticatable implements FilamentUser
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -63,10 +50,12 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(Room::class, 'kamar', 'kamar');
     }
+
     public function canAccessFilament(): bool
     {
         return str_ends_with($this->usertype, 'admin');
     }
+
     /**
      * Handle the logic when a User model is saved.
      */
@@ -79,17 +68,29 @@ class User extends Authenticatable implements FilamentUser
 
             if ($user->wasChanged('kamar')) {
                 Log::info('kamar field was changed');
+                $kamarLama = $user->getOriginal('kamar');
                 $kamarBaru = $user->kamar;
 
-                // Find the room associated with the new kamar
-                $room = Room::where('kamar', $kamarBaru)->first();
+                // Find the room associated with the old kamar and clear penghuni
+                if ($kamarLama) {
+                    $roomLama = Room::where('kamar', $kamarLama)->first();
+                    if ($roomLama) {
+                        $roomLama->penghuni = null;
+                        $roomLama->save();
+                        Log::info("Penghuni cleared from old room {$roomLama->kamar}");
+                    } else {
+                        Log::warning("Old room for kamar {$kamarLama} not found");
+                    }
+                }
 
-                if ($room) {
-                    $room->penghuni = $user->nim;
-                    $room->save();
-                    Log::info("User {$user->nim} assigned to room {$room->kamar}");
+                // Find the room associated with the new kamar
+                $roomBaru = Room::where('kamar', $kamarBaru)->first();
+                if ($roomBaru) {
+                    $roomBaru->penghuni = $user->nim;
+                    $roomBaru->save();
+                    Log::info("User {$user->nim} assigned to new room {$roomBaru->kamar}");
                 } else {
-                    Log::warning("Room for kamar {$kamarBaru} not found");
+                    Log::warning("New room for kamar {$kamarBaru} not found");
                 }
             } else {
                 Log::info('kamar field was not changed');
