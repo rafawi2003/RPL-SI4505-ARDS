@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RefillGalonResource\Pages;
@@ -12,8 +11,8 @@ use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\ViewField;
 
 class RefillGalonResource extends Resource
 {
@@ -39,12 +38,9 @@ class RefillGalonResource extends Resource
                     ->label('Total Harga')
                     ->required()
                     ->numeric(),
-                FileUpload::make('bukti_pembayaran')
-                    ->disk('public')
-                    ->directory('bukti_pembayaran')
-                    ->image()
+                ViewField::make('bukti_pembayaran')
                     ->label('Bukti Pembayaran')
-                    ->nullable(),
+                    ->view('components.bukti-pembayaran'),
                 Select::make('metode_pembayaran')
                     ->label('Metode Pembayaran')
                     ->options([
@@ -66,13 +62,13 @@ class RefillGalonResource extends Resource
                 TextColumn::make('total_harga')->label('Total Harga')->money('IDR', true),
                 ImageColumn::make('bukti_pembayaran')
                     ->label('Bukti Pembayaran')
-                    ->disk('public'),
+                    ->getStateUsing(fn ($record) => asset('bukti_pembayaran/' . $record->bukti_pembayaran)),
                 TextColumn::make('metode_pembayaran')->label('Metode Pembayaran'),
                 TextColumn::make('created_at')->label('Tanggal Dibuat')->dateTime(),
                 TextColumn::make('updated_at')->label('Tanggal Diperbarui')->dateTime(),
             ])
             ->filters([
-                // Add filters if necessary
+                // Tambahkan filter jika diperlukan
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -92,3 +88,5 @@ class RefillGalonResource extends Resource
         ];
     }
 }
+
+

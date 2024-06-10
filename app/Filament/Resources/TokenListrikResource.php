@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TokenListrikResource\Pages;
@@ -44,9 +43,10 @@ class TokenListrikResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('nama_pengguna')
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('bukti_pembayaran')
-                    ->disk('public')
-                    ->directory('bukti_pembayaran'),
+                Forms\Components\ViewField::make('bukti_pembayaran')
+                    ->label('Bukti Pembayaran')
+                    ->view('components.bukti-pembayaran')
+                    ->statePath('bukti_pembayaran'),
             ]);
     }
 
@@ -65,7 +65,8 @@ class TokenListrikResource extends Resource
                 Tables\Columns\TextColumn::make('nama_pengguna')
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('bukti_pembayaran')
-                    ->disk('public'),
+                    ->label('Bukti Pembayaran')
+                    ->getStateUsing(fn ($record) => $record->bukti_pembayaran ? asset('bukti_pembayaran/' . $record->bukti_pembayaran) : null),
                 Tables\Columns\TextColumn::make('token')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -103,4 +104,5 @@ class TokenListrikResource extends Resource
         ];
     }
 }
+
 

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PembayaranWifiResource\Pages;
@@ -10,9 +9,11 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\ViewField;
 
 class PembayaranWifiResource extends Resource
 {
@@ -39,9 +40,10 @@ class PembayaranWifiResource extends Resource
                     ->required(),
                 TextInput::make('kamar')
                     ->required(),
-                TextInput::make('bukti_pembayaran')
+                ViewField::make('bukti_pembayaran')
                     ->label('Bukti Pembayaran')
-                    ->required(),
+                    ->view('components.bukti-pembayaran')
+                    ->statePath('bukti_pembayaran'),
             ]);
     }
 
@@ -54,12 +56,9 @@ class PembayaranWifiResource extends Resource
                 TextColumn::make('status_transaksi'),
                 TextColumn::make('nim'),
                 TextColumn::make('kamar'),
-                TextColumn::make('bukti_pembayaran')
+                ImageColumn::make('bukti_pembayaran')
                     ->label('Bukti Pembayaran')
-                    ->formatStateUsing(function ($state) {
-                        return "<img src='{$state}' alt='Bukti Pembayaran' style='max-width: 150px;' />";
-                    })
-                    ->html(),
+                    ->getStateUsing(fn ($record) => asset('bukti_pembayaran/' . $record->bukti_pembayaran)),
                 TextColumn::make('created_at')->dateTime(),
                 TextColumn::make('updated_at')->dateTime(),
             ])
@@ -85,3 +84,6 @@ class PembayaranWifiResource extends Resource
         ];
     }
 }
+
+
+

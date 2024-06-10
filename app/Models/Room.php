@@ -16,7 +16,7 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'gender', 'gedung', 'lantai', 'kamar','penghuni'
+        'gender', 'gedung', 'lantai', 'kamar', 'penghuni'
     ];
 
     /**
@@ -31,21 +31,42 @@ class Room extends Model
 
             if ($room->wasChanged('penghuni')) {
                 Log::info('penghuni field was changed');
+                $penghuniLama = $room->getOriginal('penghuni');
                 $penghuniBaru = $room->penghuni;
 
-                // Find the user associated with the penghuni
-                $user = User::where('nim', $penghuniBaru)->first();
+                // Handle logic for old penghuni
+                if ($penghuniLama) {
+                    $userLama = User::where('nim', $penghuniLama)->first();
+                    if ($userLama) {
+                        $userLama->kamar = null;
+                        $userLama->status = 'Mohon Hubungi Admin';
+                        $userLama->save();
+                        Log::info("User {$userLama->nim} removed from old kamar");
+                    } else {
+                        Log::warning("User with nim {$penghuniLama} not found");
+                    }
+                }
 
-                if ($user) {
-                    $user->kamar = $room->kamar;
-                    $user->save();
-                    Log::info("User {$user->nim} assigned to kamar {$room->kamar}");
-                } else {
-                    Log::warning("User with nim {$penghuniBaru} not found");
+                // Handle logic for new penghuni
+                if ($penghuniBaru) {
+                    $userBaru = User::where('nim', $penghuniBaru)->first();
+                    if ($userBaru) {
+                        $userBaru->kamar = $room->kamar;
+                        $userBaru->save();
+                        Log::info("User {$userBaru->nim} assigned to new kamar {$room->kamar}");
+                    } else {
+                        Log::warning("User with nim {$penghuniBaru} not found");
+                    }
                 }
             } else {
                 Log::info('penghuni field was not changed');
             }
         });
+    }
+
+    // Relasi dengan User
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'penghuni', 'nim');
     }
 }
